@@ -15,9 +15,9 @@ const Header = () => {
                             <span className="input-group-text " id="basic-addon2"><BsSearch size={15}/></span>
                         </div>
                     <Nav className="ms-auto">
-                        <Nav.Link title='Yêu thích' href= '/favorite'><BsFillHeartFill size={30}/></Nav.Link>
-                        <Nav.Link title='Giỏ hàng' href='/cart'><BsCart size={30}/></Nav.Link>
-                        <Nav.Link title='Tài khoản' href='/login'><BsFillPersonFill size={30}/></Nav.Link>
+                        <Nav.Link title='Yêu thích' href= '/favorite'><BsFillHeartFill size={30}/>Yêu thích</Nav.Link>
+                        <Nav.Link title='Giỏ hàng' href='/cart'><BsCart size={30}/>Giỏ hàng</Nav.Link>
+                        <Nav.Link title='Tài khoản' href='/login'><BsFillPersonFill size={30}/>Tài khoản</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
