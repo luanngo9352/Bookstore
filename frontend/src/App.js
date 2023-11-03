@@ -9,6 +9,7 @@ const App = () => {
       <main className='py-3' style={{backgroundColor:'#f5f5f7'}}>
       <Container>
         <Home/>
+    
       </Container>
       </main>
       <Footer />

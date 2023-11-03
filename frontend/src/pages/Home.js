@@ -23,6 +23,10 @@ import book21img from '../images/hachitte-resized-img.png'
 import book22img from '../images/oxford-resized-img.png'
 import book23img from '../images/happerresized-img.png'
 import Marquee from "react-fast-marquee";
+import Homescreen from '../screens/Homescreen'
+
+// const listItem = [{name:'example',thumbnail:book5img},
+// {name:'example1',thumbnail:book6img},{name:'example2',thumbnail:book7img},{name:'example3',thumbnail:book8img},,{name:'example3',thumbnail:book9img},,{name:'example3',thumbnail:book10img},{name:'example3',thumbnail:book11img}]
 const Home = () => {
   return (
     <>
@@ -52,6 +56,9 @@ const Home = () => {
     </section>
     <section className='home-wrapper-2 py-5'>
         <div className='container-xxl'>
+            <div className='col-12 categories'>
+            <span className='header-tile' >Danh Mục Sản Phẩm</span>
+            </div>
              <div className='row'>
                 <div className='col-12'>
                     <div className='categories d-flex justify-content-between align-items-center'>
@@ -100,8 +107,40 @@ const Home = () => {
                     </div>
                 </div>
              </div>
-            
+           
         </div>
+    </section>
+    {/* <section className='home-wrapper-2 py-5'>
+        <div className='container-xxl'>
+             <div className='row'>
+                <div className='col-12'>
+                    <div className='categories d-flex justify-content-between align-items-center'>
+                    {listItem.map(item => (
+                     <div className='item'>
+                    <span>
+                    {item.name}
+                    </span>
+                    <div className='thumbnail'>
+                        <img src={item.thumbnail }>
+                        </img>
+                    </div>
+                    </div>
+                ))}
+                    </div>
+                </div>
+             </div>
+           
+        </div>
+    </section> */}
+     <section className='list-products py-5 '>
+            <div className='col-12 categories'>
+                <div className='header-tile' >
+                    <span className='header-tile-product'>Sản Phẩm</span>
+                </div>
+            </div>
+            <Homescreen />
+            <div class="container">
+</div>
     </section>
     <section className='marque-wrapper py-5'>
         <div className='container-xxl'>

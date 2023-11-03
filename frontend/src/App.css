@@ -90,3 +90,22 @@ footer{
 }
 
 /* this is end css category*/
+.box__item__list{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+}
+.product-card{
+    padding: 15px;
+}
+.header-tile{
+    font-size: 1rem;
+    color:rgba(0,0,0,.54);
+    font-weight: 500;
+}
+.header-tile-product{
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
