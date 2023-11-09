@@ -23,7 +23,8 @@ import book21img from '../images/hachitte-resized-img.png'
 import book22img from '../images/oxford-resized-img.png'
 import book23img from '../images/happerresized-img.png'
 import Marquee from "react-fast-marquee";
-import Homescreen from '../screens/Homescreen'
+import Homescreen from '../screens/HomeScreen'
+import { Link } from 'react-router-dom'
 
 // const listItem = [{name:'example',thumbnail:book5img},
 // {name:'example1',thumbnail:book6img},{name:'example2',thumbnail:book7img},{name:'example3',thumbnail:book8img},,{name:'example3',thumbnail:book9img},,{name:'example3',thumbnail:book10img},{name:'example3',thumbnail:book11img}]
@@ -139,8 +140,11 @@ const Home = () => {
                 </div>
             </div>
             <Homescreen />
-            <div class="container">
-</div>
+    <div className='col-12 button-home'>
+        <Link to={ '/all-product'}>
+    <button type="button" class="btn btn-primary d-flex justify-content-center ">Primary</button>
+        </Link>
+    </div>
     </section>
     <section className='marque-wrapper py-5'>
         <div className='container-xxl'>

@@ -1,4 +1,3 @@
-//import { Container, Row, Col } from "react-bootstrap";
 import React from 'react';
 import playstore from '../images/playstore.png'
 import appstore from '../images/Appstore.png'
