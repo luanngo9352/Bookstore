@@ -6,32 +6,32 @@ const productSchema = new mongoose.Schema({
         required: true,
         ref: "User",
     },
-    name:{
+    bookName:{
         type: String,
         required: true,
     },
-    category:{
-        type: String,
+    categoryID:{
+        type: Number,
         required: true,
     },
-    author:{
-        type: String,
+    authorID:{
+        type: Number,
         required: true,
     },
-    price:{
+    bookPrice:{
         type: Number,
         required: true,
         default: 0,
     },
-    decription:{
+    bookDetail:{
         type: String,
         required: true,
     },
-    image:{
+    bookImage:{
         type: String,
         required: true
     },
-    quanranty:{
+    bookQuaranty:{
         type: Number,
         required: true,
         default: 0,
