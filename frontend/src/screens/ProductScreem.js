@@ -1,13 +1,20 @@
-import React from 'react'
-import products from '../products-and-images/products'
-import { useParams } from 'react-router-dom'
+import {useState,useEffect} from 'react'
+import axios from 'axios'
+import {useParams } from 'react-router-dom'
 import { Image, Button} from 'react-bootstrap';
 import Rating from '../componets/Rating';
 import {BsCart, BsFillHeartFill} from 'react-icons/bs';
 const ProductScreem = () => {
+    const [product,setProduct]= useState({});
     const { id: productID} = useParams();
-    const product = products.find((p) => p._id === productID);
-    console.log(product)
+    useEffect(()=>{
+      const fetchProduct = async() => {
+        const { data} = await axios.get(`/api/products/${productID}`);
+        setProduct(data);
+    };
+    fetchProduct();
+    }, [ productID]);
+    
   return (
    <>
     <section className='home-wrapper-2 py-5'>
