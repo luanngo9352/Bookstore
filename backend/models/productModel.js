@@ -10,12 +10,12 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    categoryID:{
-        type: Number,
+    category:{
+        type: String,
         required: true,
     },
-    authorID:{
-        type: Number,
+    author:{
+        type: String,
         required: true,
     },
     bookPrice:{
