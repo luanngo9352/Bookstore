@@ -1,6 +1,6 @@
 import React from 'react';
-import playstore from '../images/playstore.png'
-import appstore from '../images/Appstore.png'
+import playstore from '../imageshome/playstore.png'
+import appstore from '../imageshome/Appstore.png'
 import { BsFacebook,BsInstagram } from 'react-icons/bs';
 
 const Footer = () => {

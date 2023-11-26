@@ -1,29 +1,29 @@
 import React from 'react'
-import bookimg from '../images/main_banner.png'
-import book2img from '../images/Book2.jpg'
-import book3img from '../images/Book3.jpg'
-import book4img from '../images/Book5.jpg'
-import book5img from '../images/tieuthuyet.jpg'
-import book6img from '../images/vanhoc.jpg'
-import book7img from '../images/thieunhis.jpg'
-import book8img from '../images/kinhte.jpg'
-import book9img from '../images/ngontinh.jpg'
-import book10img from '../images/tamli.jpg'
-import book11img from '../images/manga1.png'
-import book12img from '../images/hikari-resized-img.png'
-import book13img from '../images/ipm-resized-img.png'
-import book14img from '../images/amak-resized-img.png'
-import book15img from '../images/kimdong-resized-img.png'
-import book16img from '../images/sakura-resized-img.png'
-import book17img from '../images/skybook-resized-img.png'
-import book18img from '../images/tsuki-resized-img.png'
-import book19img from '../images/cambrig-resized-img.png'
-import book20img from '../images/cengage-resized-img.png'
-import book21img from '../images/hachitte-resized-img.png'
-import book22img from '../images/oxford-resized-img.png'
-import book23img from '../images/happerresized-img.png'
+import bookimg from '../imageshome/main_banner.png'
+import book2img from '../imageshome/Book2.jpg'
+import book3img from '../imageshome/Book3.jpg'
+import book4img from '../imageshome/Book5.jpg'
+import book5img from '../imageshome/tieuthuyet.jpg'
+import book6img from '../imageshome/vanhoc.jpg'
+import book7img from '../imageshome/thieunhis.jpg'
+import book8img from '../imageshome/kinhte.jpg'
+import book9img from '../imageshome/ngontinh.jpg'
+import book10img from '../imageshome/tamli.jpg'
+import book11img from '../imageshome/manga1.png'
+import book12img from '../imageshome/hikari-resized-img.png'
+import book13img from '../imageshome/ipm-resized-img.png'
+import book14img from '../imageshome/amak-resized-img.png'
+import book15img from '../imageshome/kimdong-resized-img.png'
+import book16img from '../imageshome/sakura-resized-img.png'
+import book17img from '../imageshome/skybook-resized-img.png'
+import book18img from '../imageshome/tsuki-resized-img.png'
+import book19img from '../imageshome/cambrig-resized-img.png'
+import book20img from '../imageshome/cengage-resized-img.png'
+import book21img from '../imageshome/hachitte-resized-img.png'
+import book22img from '../imageshome/oxford-resized-img.png'
+import book23img from '../imageshome/happerresized-img.png'
 import Marquee from "react-fast-marquee";
-import Homescreen from '../screens/HomeScreen'
+import HomeScreen from '../screens/HomeScreen'
 import { Link } from 'react-router-dom'
 
 // const listItem = [{name:'example',thumbnail:book5img},
@@ -138,8 +138,9 @@ const Home = () => {
                 <div className='header-tile' >
                     <span className='header-tile-product'>Sản Phẩm</span>
                 </div>
+                <HomeScreen/>
             </div>
-            <Homescreen />
+           
     <div className='col-12 button-home'>
         <Link to={ '/all-product'}>
     <button type="button" class="btn btn-primary d-flex justify-content-center ">Primary</button>

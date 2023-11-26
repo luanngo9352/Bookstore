@@ -41,7 +41,7 @@ const products = [
     author: 'Fujiko F Fujio',
     bookPrice: 61000,
     bookDetail: 'Câu chuyện bắt đầu khi Nobita tìm thấy một hòn đảo hình lưỡi liềm trên trời mây. Ở nơi đó, tất cả đều hoàn hảo… đến mức cậu nhóc mê ngủ ngày như Nobita cũng có thể trở thành một thần đồng toán học, một siêu sao thể thao! Doraemon và nhóm bạn đã cùng sử dụng một món bảo bối độc đáo chưa từng xuất hiện trước đây để đến với vương quốc tuyệt vời này. Cùng với những người bạn ở đây, đặc biệt là chàng robot mèo Sonya, cả hội đã có chuyến hành trình tới vương quốc trên mây tuyệt vời… cho đến khi những bí mật đằng sau vùng đất lý tưởng này được hé lộ!',
-    bookImage: '/images/doraemon_nobita-va-vung-dat-ly',
+    bookImage: '/images/doraemon_nobita-va-vung-dat-ly.jpg',
     bookQuaranty: 20
   },
   {

@@ -1,8 +1,11 @@
 import React from 'react'
 import { FaStar, FaRegStar} from 'react-icons/fa'
-import products from '../products-and-images/products'
 import Product from '../componets/Product'
+import Loader from '../componets/Loader'
+import Message from '../componets/Message'
+import { useGetProductsQuery } from '../slices/productsApiSlice'
 const ProductGridScreen = () => {
+   const {data: products, isLoading, error} = useGetProductsQuery();
   return (
    <>
     <section className='list-products py-5 '>
@@ -256,11 +259,16 @@ const ProductGridScreen = () => {
         </div>
                 </div>
                 <div className='col-lg-9'>
-                <div className='product-card row row-cols-5'>
-                        {products.map((product)=>( 
-                            <Product product={product}/>
-                        ))}
-                </div>
+                        {isLoading ? (
+                        <Loader/>
+                    ): error ? (<Message variant='danger'>{error?.data?.message || error.error}</Message>
+                    ) : (<>
+                            <div className='product-card row row-cols-5'>
+                            {products.map((product)=>( 
+                                <Product product={product}/>
+                            ))}
+                            </div>
+                        </>) }
                 </div>
                 <nav aria-label="Page navigation example" className="d-flex justify-content-center mt-3">
                   <ul className="pagination">
