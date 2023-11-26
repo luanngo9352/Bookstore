@@ -1,7 +1,7 @@
 const products = [
   {
     bookName: 'BlueLock - Tập 15',
-    category: 'Truyện tranh',
+    category: 'Manga',
     author: 'Muneyuki Kaneshiro, Yusuke Nomura',
     bookPrice: 55000,
     bookDetail: 'Hiệp 1 trận quyết đấu đặt cược sự tồn vong của dự án BLUELOCK với tuyển U-20 đã khép lại việc BLUELOCK 11 vươn lên dẫn trước nhờ cú sút lật ngược tình thế của Itoshi Rin! Kế hoạch bị mật mà tuyển U-20 sẽ dùng để chống lại những cái tôi hừng hực khí thế khiến cả thế giới phải sửng sốt là gì!? Mắt của Shido Ryusei, người được Itoshi Sae tìm ra, sáng lên một cách bất thường! Trong trận chiến quyết định đang không ngừng nóng lên ấy, hãy ghi bàn đi, Isagi Yoichi!!',
@@ -28,7 +28,7 @@ const products = [
   },
   {
     bookName: 'Chuyện Con Mèo Dạy Hải Âu Bay',
-    category: 'Hư cấu',
+    category: 'Văn học',
     author: 'Luis Sepúlveda',
     bookPrice: 72000,
     bookDetail: 'Cô hải âu Kengah bị nhấn chìm trong váng dầu thứ chất thải nguy hiểm mà những con người xấu xa bí mật đổ ra đại dương. Với nỗ lực đầy tuyệt vọng, cô bay vào bến cảng Hamburg và rơi xuống ban công của con mèo mun, to đùng, mập ú Zorba. Trong phút cuối cuộc đời, cô sinh ra một quả trứng và con mèo mun hứa với cô sẽ thực hiện ba lời hứa chừng như không tưởng với loài mèo.Lời hứa của một con mèo cũng là trách nhiệm của toàn bộ mèo trên bến cảng, bởi vậy bè bạn của Zorba bao gồm ngài mèo Đại Tá đầy uy tín, mèo Secretario nhanh nhảu, mèo Einstein uyên bác, mèo Bốn Biển đầy kinh nghiệm đã chung sức giúp nó hoàn thành trách nhiệm. Tuy nhiên, việc chăm sóc, dạy dỗ một con hải âu đâu phải chuyện đùa, sẽ có hàng trăm rắc rối nảy sinh và cần có những kế hoạch đầy linh hoạt được bàn bạc kỹ càng… Tác phẩm không chỉ là một câu chuyện ấm áp, trong sáng, dễ thương về loài vật mà còn chuyển tải thông điệp về trách nhiệm với môi trường, về sự sẻ chia và yêu thương cũng như ý nghĩa của những nỗ lực – “Chỉ những kẻ dám mới có thể bay”.Cuốn sách mở đầu cho mùa hè với minh họa dễ thương, hài hước là món quà dành cho mọi trẻ em và người lớn.',
@@ -37,7 +37,7 @@ const products = [
   },
   {
     bookName: 'Doraemon Movie Story Màu - Nobita Và Vùng Đất Lý Tưởng Trên Bầu Trời',
-    category: 'Truyện tranh',
+    category: 'Manga',
     author: 'Fujiko F Fujio',
     bookPrice: 61000,
     bookDetail: 'Câu chuyện bắt đầu khi Nobita tìm thấy một hòn đảo hình lưỡi liềm trên trời mây. Ở nơi đó, tất cả đều hoàn hảo… đến mức cậu nhóc mê ngủ ngày như Nobita cũng có thể trở thành một thần đồng toán học, một siêu sao thể thao! Doraemon và nhóm bạn đã cùng sử dụng một món bảo bối độc đáo chưa từng xuất hiện trước đây để đến với vương quốc tuyệt vời này. Cùng với những người bạn ở đây, đặc biệt là chàng robot mèo Sonya, cả hội đã có chuyến hành trình tới vương quốc trên mây tuyệt vời… cho đến khi những bí mật đằng sau vùng đất lý tưởng này được hé lộ!',
@@ -55,7 +55,7 @@ const products = [
   },
   {
     bookName: 'Fire Force - Tập 17',
-    category: 'Truyện tranh',
+    category: 'Manga',
     author: 'Atsushi Ohkubo',
     bookPrice: 70000,
     bookDetail: 'Truyện lấy bối cảnh thế giới khi con người đối mặt với hiện tượng “nhân thể bộc hỏa”, tức con người tự bốc cháy. Câu chuyện nói về những con người có năng lực và quyết tâm kết hợp với nhau lập thành các Biệt đội cứu hỏa để bảo vệ con người trước “Diệm nhân”. Shinra Kusakabe là một chàng trai trẻ bị gắn biệt danh là “Dấu chân ác quỷ”, vì chân của cậu ấy có thể bốc cháy theo ý muốn. Sau khi cậu gia nhập Biệt đội cứu hỏa số 8, cậu đã cùng những đồng đội trong đội ngũ chiến đấu chống lại các Diệm nhân và theo đuổi lý tưởng anh hùng của mình. Trong hành trình bảo vệ nhân loại, Shinra dần phát hiện ra sự thật bất ngờ về nguyên nhân gây ra vụ hỏa hoạn dẫn tới cái chết đau đớn của gia đình cậu 12 năm về trước và quyết định cùng Biệt đội cứu hỏa số 8 tìm ra ngọn nguồn sự thật…',
@@ -73,7 +73,7 @@ const products = [
   },
   {
     bookName: 'Hai Vạn Dặm Dưới Biển',
-    category: 'Hư cấu',
+    category: 'Văn học',
     author: 'Jules Verne',
     bookPrice: 72000,
     bookDetail: 'Giáo sư Aronnax, một nhà tự nhiên học và chuyên gia về sinh vật biển nổi tiếng người Pháp, đang trên đường trở về quê hương sau một chuyến thám hiểm dài, thì biết được thông tin về một sinh vật biển đầy bí ẩn đang tấn công các con tàu trên đại dương. Ông nhanh chóng quyết định tham gia vào chuyến tìm kiếm và tiêu diệt con quái vật. Sau đó, chính sinh vật khổng lồ huyền bí đã tấn công con thuyền mà ông đang đi, ông trôi lênh đênh trên biển cùng với người hầu của mình và một thợ săn cá voi người Canada. Hóa ra con “quái vật” đó lại là một chiếc tàu ngầm khổng lồ! Được chỉ huy bởi vị thuyền trưởng Nemo thông minh nhưng có ý chống đối xã hội một cách gay gắt – Nautilus – chiếc tàu ngầm đầu tiên trên thế giới, đã đi khắp các đại dương, đưa Aronnax và những người bạn của ông đi vòng quanh thế giới bằng lối đi dưới đáy biển. Nhưng Nemo đang che giấu những bí mật của riêng mình... và Nemo cũng không hề có ý định để Aronnax cùng những người bạn của ông trở lại đất liền.',
@@ -82,7 +82,7 @@ const products = [
   },
   {
     bookName: 'Hành Tinh Của Một Kẻ Nghĩ Nhiều',
-    category: 'Tâm lý',
+    category: 'Tâm lí',
     author: 'Nguyễn Đoàn Minh Thư',
     bookPrice: 65000,
     bookDetail: '“Đó là mùa hè năm 2020, mùa hè của COVID-19 và một ngàn vạn khủng hoảng tuổi đôi mươi. Đó là mùa hè mình bắt chuyến bay sớm nhất có thể vào ngày 20 tháng 3 để chạy khỏi nước Anh đang bùng dịch, bị kẹt lại sân bay Bangkok trong 24 giờ đồng hồ vì chuyến bay quá cảnh về Sài Gòn bị huỷ.. Đó là mỗi đêm mùa hè nằm trên giường stress chuyện deadline luận văn, stress chuyện thất nghiệp không kiếm ra tiền, stress chuyện bỏ lỡ cơ hội thực tập giúp ích cho sự nghiệp của mình, stress chuyện học hành dở dang - không biết bao giờ mới có thể quay lại Anh và hoàn thành tấm bằng đại học, stress chuyện tồn tại một cách mơ hồ, không biết mình là ai.” Hành tinh của một kẻ nghĩ nhiều là hành trình khám phá thế giới nội tâm của một người trẻ. Đó là một hành tinh đầy hỗn loạn của những suy nghĩ trăn trở, những dằn vặt, những cuộc chiến nội tâm, những cảm xúc vừa phức tạp cũng vừa rất đỗi con người. Một thế giới quen thuộc với tất cả chúng ta.',
@@ -91,7 +91,7 @@ const products = [
   },
   {
     bookName: 'Hoàng Tử Bé',
-    category: 'Ngụ ngôn',
+    category: 'Thiếu nhi',
     author: 'Antoine de Saint-Exupéry',
     bookPrice: 55000,
     bookDetail: 'Hoàng Tử Bé kể về một cậu hoàng tử sống trên tiểu tinh cầu B612. Một ngày nọ cậu đã rời hành tinh của mình mà đi xem những phần còn lại của vũ trụ. Và ở những tinh cầu khác cậu đã gặp được toàn những điều kỳ quặc. Cậu bắt đầu khám phá chúng và nhận ra nhiều điều.',
@@ -100,7 +100,7 @@ const products = [
   },
   {
     bookName: 'Khéo Ăn Nói Sẽ Có Được Thiên Hạ',
-    category: 'Sách kỹ năng',
+    category: 'Kinh tế',
     author: 'Trác Nhã',
     bookPrice: 64000,
     bookDetail: 'Trong xã hội thông tin hiện đại, sự im lặng không còn là vàng nữa, nếu không biết cách giao tiếp thì dù là vàng cũng sẽ bị chôn vùi. Trong cuộc đời một con người, từ xin việc đến thăng tiến, từ tình yêu đến hôn nhân, từ tiếp thị cho đến đàm phán, từ xã giao đến làm việc… không thể không cần đến kĩ năng và khả năng giao tiếp. Khéo ăn khéo nói thì đi đâu, làm gì cũng gặp thuận lợi. Không khéo ăn nói, bốn bề đều là trở ngại khó khăn. Đã bao giờ đánh mất một công việc, bạn bỏ lỡ một mối quan hệ tuyệt vời, hay đơn giản là bạn cảm thấy khó nói chuyện với mọi người. Bạn có bao giờ nghĩ là do kĩ năng nói chuyện của mình chưa tốt, chưa thuyết phục được mọi người. Bạn đổ lỗi cho số phận và vận may của mình chưa đến. Hãy dừng việc than thân trách phận và hành động để thay đòi chính mình. Vậy làm thế nào để cải thiện và tránh gặp phải những tình huống như trên? Làm thế nào để ăn nói khéo léo? Có phương pháp và quy luật nào được áp dụng khi giao tiếp không? Có nguyên tắc và bí quyết nào cho các cuộc nói chuyện không? Trong những tình huống khác nhau, với những người khác nhau thì phải nói chuyện như thế nào, và làm sao để trình bày những điều khó nói? Cuốn sách Khéo ăn nói sẽ có được thiên hạ của Trác Nhã sẽ giải đáp cho bạn đọc những câu hỏi đó. Cuốn sách với ngôn từ rõ ràng, gần gũi với cuộc sống sẽ mang đến những kĩ năng và phương pháp giao tiếp thực dụng, chắc chắn sẽ giúp ích được cho bạn đọc.',
@@ -118,7 +118,7 @@ const products = [
   },
   {
     bookName: 'Không Phải Sói Nhưng Cũng Đừng Là Cừu',
-    category: 'Kỹ năng sống ',
+    category: 'Kinh tế',
     author: 'Lê Bảo Ngọc',
     bookPrice: 70000,
     bookDetail: 'SÓI VÀ CỪU - BẠN KHÔNG TỐT NHƯ BẠN NGHĨ ĐÂU! Làn ranh của việc ngây thơ hay xấu xa đôi khi mỏng manh hơn bạn nghĩ. Bạn làm một việc mà mình cho là đúng, kết quả lại bị mọi người khiển trách. Bạn ủng hộ một quan điểm của ai đó, và số đông khác lại ủng hộ một quan điểm trái chiều. Rốt cuộc thì bạn sai hay họ sai? Cuốn sách “Không phải sói nhưng cũng đừng là cừu” đến từ tác giả Lê Bảo Ngọc sẽ giúp bạn hiểu rõ hơn những khía cạnh sắc sảo phía sau những nhận định đúng, sai đơn thuần của mỗi người. Những câu hỏi đầy tính tranh cãi như “Cứu người hay cứu chó?”, “Một kẻ thô lỗ trong lớp vỏ “thẳng tính” khác với người EQ thấp như thế nào?”, “Vì sao một bộ phận nữ giới lại victim blaming đối với nạn nhân bị xâm hại?”,... được tác giả đưa ra trong “Không phải sói nhưng cũng đừng là cừu”. Bằng từng chương sách của mình, tác giả vạch rõ cho bạn rằng “thật sự thế nào mới là người tốt”, ngây thơ và xấu xa có ranh giới rõ ràng như thế không, rốt cuộc bạn có là người tốt như mình vẫn luôn nghĩ? Trong thời đại mà mọi thứ đều rất chóng vánh này, ranh giới giữa tốt và xấu, đúng và sai đôi lúc là không tồn tại. Cái tốt mà chúng ta nghĩ, hóa ra lại là xấu trong mắt kẻ khác. Cái đúng ở thời điểm này, đến một thời điểm khác lại trở thành sai. Tốt đẹp hay xấu xa, thật khó phân định.',
@@ -136,7 +136,7 @@ const products = [
   },
   {
     bookName: 'Lớp Học Mật Ngữ - Tập 1',
-    category: 'Truyện tranh',
+    category: 'Manga',
     author: 'B R O Group',
     bookPrice: 69000,
     bookDetail: 'Mời bạn đến với truyện tranh mới Hiệp hội viêm màng túi. Đang buồn vì bị bố mẹ cắt giảm tiền tiêu vặt, ấy vậy mà Song Tử nam còn vào lớp thông báo rằng “Ngân Hà luxury rồi”, giờ cái gì cũng lên giá, cũng đắt hết trơn... Biết bao giờ mới đủ tiền mua truyện, đồ chơi đây? Trong khi cả lớp “lan toả năng lượng” u ám thì Kim Ngưu nam vẫn bình thản ăn đùi gà chiên nước mắm. Các bạn đánh giá món này bây giờ rất đắt! Sao Kim Ngưu có tiền mua ăn sáng? Thế là mọi người nhờ vả Kim Ngưu chia sẻ bí quyết giàu sang, giúp các bạn vượt qua cuộc “khủng hoảng kinh tế” này...',
@@ -154,7 +154,7 @@ const products = [
   },
   {
     bookName: 'Ông Già Và Biển Cả',
-    category: 'Kinh điển',
+    category: 'Văn học',
     author: 'Ernest Hemingway',
     bookPrice: 62000,
     bookDetail: 'Ông Già Và Biển Cả là một trong những tác phẩm nổi tiếng nhất của Hemingway, sử dụng nguyên lý “tảng băng trôi” khi kể về một cuộc săn đuổi con cá kiếm khổng lồ của ông lão đánh cá Santiago, người đã cố gắng chiến đấu trong ba ngày đêm vật lộn trên biển vùng Giếng Lớn khi ông câu được nó. Sang đến ngày thứ ba, ông dùng lao đâm chết được con cá, buộc nó vào mạn thuyền và lôi về nhưng đàn cá mập đánh hơi thấy đã lăn xả tới, ông lại đem hết sức tàn chống chọi với lũ cá mập, phóng lao, thậm chí cả mái chèo để đánh. Ông giết được nhiều con, đuổi được chúng đi, nhưng cuối cùng khi nhìn đến con cá kiếm của mình thì nó đã bị rỉa hết thịt chỉ còn trơ lại một bộ xương khổng lồ. Tác phẩm là bản anh hùng ca ca ngợi sức lao động và khát vọng của con người.',
@@ -163,7 +163,7 @@ const products = [
   },
   {
     bookName: 'Thiên Thần Diệt Thế - Tập 27',
-    category: 'Truyện tranh',
+    category: 'Manga',
     author: 'Takaya Kagami',
     bookPrice: 56000,
     bookDetail: 'Trong lúc di chuyển, để xác minh kế hoạch của Guren, Yuichiro hỏi “Anh đã giết gia đình tôi, đúng không?” khiến Guren nghẹn lời. Yuichiro đòi anh một câu trả lời dứt khoát, sau đó dẫn tới việc đấu đá nhau. Guren cảm nhận được sự trưởng thành trong Yuichiro, còn cậu cảm nhận được sức mạnh của anh ta. Kết quả của cuộc chiến này sẽ ra sao!?',
