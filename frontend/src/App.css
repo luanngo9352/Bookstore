@@ -152,4 +152,8 @@ footer{
     display: flex;
     justify-content: center
 }
+.input-cart{
+    width: 20%;
+    text-align: center;
+}
 /* this is end css product-title*/

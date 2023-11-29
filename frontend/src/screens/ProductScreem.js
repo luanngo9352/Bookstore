@@ -1,4 +1,5 @@
 import {useParams } from 'react-router-dom'
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { Image, Button} from 'react-bootstrap';
 import Rating from '../componets/Rating';
 import {BsCart, BsFillHeartFill} from 'react-icons/bs';
@@ -46,8 +47,18 @@ const ProductScreem = () => {
                                             <span>${product.bookPrice} </span>
                                           </div>
                                           <div className='row mb-4'>
-                                                <div class="col-sm-8"><label> Số Lượng: </label></div>
-                                                <div class="col-sm-4">col-sm-4</div>
+                                                <div className="col-sm-2 d-flex align-items-center"><label> Số Lượng: </label></div>
+                                                <div className="col-sm-10 w-50">
+                                                  <div className='input-group w-50' >
+                                                    <button className="btn btn-outline-secondary px-3 " type="button" id="button-addon1">
+                                                        <AiOutlineMinus/>
+                                                    </button>
+                                                    <input type="text" className="form-control input-cart" placeholder="" aria-label="Example text with two button addons" />
+                                                    <button className="btn btn-outline-secondary px-3 " type="button" id="button-addon1">
+                                                        <AiOutlinePlus/>
+                                                    </button>
+                                                  </div>
+                                                </div>
                                           </div>
                                           <div className='row row-cols-auto'>
                                               <div className='col'>
