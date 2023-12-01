@@ -263,14 +263,14 @@ const ProductGridScreen = () => {
                         <Loader/>
                     ): error ? (<Message variant='danger'>{error?.data?.message || error.error}</Message>
                     ) : (<>
-                            <div className='product-card row row-cols-5'>
+                            <div className='product-card row row-cols-4'>
                             {products.map((product)=>( 
                                 <Product product={product}/>
                             ))}
                             </div>
                         </>) }
                 </div>
-                <nav aria-label="Page navigation example" className="d-flex justify-content-center mt-3">
+                {/* <nav aria-label="Page navigation example" className="d-flex justify-content-center mt-3">
                   <ul className="pagination">
                     <li className="page-item disabled">
                       <a className="page-link" href="#" aria-label="Previous">
@@ -288,7 +288,7 @@ const ProductGridScreen = () => {
                       </a>
                     </li>
                   </ul>
-                </nav>
+                </nav> */}
             </div>
            </div>
     </section>

@@ -1,7 +1,10 @@
-import {Navbar,Nav,Container} from 'react-bootstrap';
+import {Badge,Navbar,Nav,Container} from 'react-bootstrap';
 import { LinkContainer} from 'react-router-bootstrap'
 import {BsCart,BsFillPersonFill,BsFillHeartFill,BsSearch} from 'react-icons/bs';
+import { useSelector } from 'react-redux'; 
 const Header = () => {
+    const { cartItems} = useSelector((state) => state.cart )
+   
   return (
     <header>
         <Navbar bg = "dark" variant='dark' expand= "lg" collapseOnSelect>
@@ -19,15 +22,25 @@ const Header = () => {
                         </div>
                     <Nav className="ms-auto">
                         <LinkContainer to = '/favorite'>
-                        <Nav.Link title='Yêu thích'><BsFillHeartFill size={30}/>Yêu thích
+                        <Nav.Link title='Yêu thích'><BsFillHeartFill size={20}/>
                         </Nav.Link>
                         </LinkContainer>
+                        <div className='container cart' style={{ position: "relative"}}>
                         <LinkContainer to ='/cart'>
-                        <Nav.Link title='Giỏ hàng'><BsCart size={30}/>Giỏ hàng
+                        <Nav.Link title='Giỏ hàng'>       
+                           {
+                             cartItems.length > 0 && (
+                                <Badge pill bg ='success'  style={{ position: 'absolute',top: '-4px', left: '30px',zIndex: '11'}}>
+                                {cartItems.reduce((a,c) =>a +c.qty , 0) }
+                                </Badge>
+                                ) 
+                             }
+                            <BsCart  size={20} style={{ zIndex: '10'}}/>
                         </Nav.Link>
                         </LinkContainer>
+                        </div>
                         <LinkContainer to ='/login'>
-                        <Nav.Link title='Tài khoản'><BsFillPersonFill size={30}/>Tài khoản
+                        <Nav.Link title='Tài khoản'><BsFillPersonFill size={20}/>
                         </Nav.Link>
                         </LinkContainer>
                     </Nav>

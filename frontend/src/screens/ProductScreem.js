@@ -1,4 +1,4 @@
-import {useParams } from 'react-router-dom'
+import {useParams,useNavigate } from 'react-router-dom'
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { Image, Button} from 'react-bootstrap';
 import Rating from '../componets/Rating';
@@ -6,10 +6,35 @@ import {BsCart, BsFillHeartFill} from 'react-icons/bs';
 import Loader from '../componets/Loader';
 import Message from '../componets/Message';
 import { useGetProductDetailQuery } from '../slices/productsApiSlice';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {addToCart} from '../slices/cartSlice'
 const ProductScreem = () => {
+  const navigate = useNavigate();
+  const dispatch =useDispatch(); 
+  const [ qty, setQuantity] = useState(1);   
   const {id: productId}= useParams();
   const { data : product,isLoading, error }= useGetProductDetailQuery(productId);
-    
+  const decreaseQty = () =>{
+    const count = document.querySelector('.count');
+    if(count.valueAsNumber <= 1 ) return;
+    const qty = count.valueAsNumber - 1;
+    setQuantity(qty);      
+  }
+  const increaseQty = () =>{
+    const count = document.querySelector('.count');
+    if(count.valueAsNumber>product.bookQuaranty) return;
+    const qty = count.valueAsNumber + 1;
+    setQuantity(qty);
+  }
+  const addToCartAndBuyHandler = () =>{
+    dispatch (addToCart({...product, qty}));
+    navigate ('/cart');
+  }
+  const addToCartHandler = () =>{
+      dispatch (addToCart({...product , qty}))
+   
+  }
   return (
    <>
    {isLoading ? (
@@ -37,7 +62,7 @@ const ProductScreem = () => {
                                               </div>
                                               <div className='col-sm-8'>
                                               <strong className='font-c-status'>
-                                                        {product.countInStock > 0 ? 'Còn Hàng': 'Hết Hàng' }
+                                                        {product.bookQuaranty > 0 ? 'Còn Hàng': 'Hết Hàng' }
                                                 </strong> 
                                               </div>
                                             
@@ -49,12 +74,12 @@ const ProductScreem = () => {
                                           <div className='row mb-4'>
                                                 <div className="col-sm-2 d-flex align-items-center"><label> Số Lượng: </label></div>
                                                 <div className="col-sm-10 w-50">
-                                                  <div className='input-group w-50' >
-                                                    <button className="btn btn-outline-secondary px-3 " type="button" id="button-addon1">
+                                                  <div className='input-group w-75' >
+                                                    <button className="btn btn-outline-secondary px-3 " type="button" onClick={decreaseQty} >
                                                         <AiOutlineMinus/>
                                                     </button>
-                                                    <input type="text" className="form-control input-cart" placeholder="" aria-label="Example text with two button addons" />
-                                                    <button className="btn btn-outline-secondary px-3 " type="button" id="button-addon1">
+                                                    <input type="number" className="form-control count input-cart"  value={qty} readOnly/>
+                                                    <button className="btn btn-outline-secondary px-3 " type="button" onClick={increaseQty}>
                                                         <AiOutlinePlus/>
                                                     </button>
                                                   </div>
@@ -65,6 +90,7 @@ const ProductScreem = () => {
                                               <Button className='btn-block'
                                               type='button'
                                               disabled= {product.countInStock === 0}
+                                               onClick={addToCartHandler}
                                               >
                                                 <span className='me-2 mb-10'><BsCart size={20}/></span>
                                                 <span>Thêm Vào Giỏi Hàng</span>        
@@ -74,7 +100,9 @@ const ProductScreem = () => {
                                               <Button className='btn-block'
                                               type='button'
                                               disabled= {product.countInStock === 0}
+                                              onClick={addToCartAndBuyHandler}
                                               >
+                                        
                                                 <span>Mua Ngay</span>        
                                               </Button>
                                               </div>
@@ -166,8 +194,8 @@ const ProductScreem = () => {
                                     <span>${product.bookPrice} </span>
                                   </div>
                                   <div className='row mb-4'>
-                                        <div class="col-sm-8"><label> Số Lượng: </label></div>
-                                        <div class="col-sm-4">col-sm-4</div>
+                                        <div className="col-sm-8"><label> Số Lượng: </label></div>
+                                        <div className="col-sm-4">col-sm-4</div>
                                   </div>
                                   <div className='row row-cols-auto'>
                                       <div className='col'>
