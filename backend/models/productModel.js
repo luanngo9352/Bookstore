@@ -18,6 +18,22 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    publicCompany:{
+        type: String,
+        required: true,
+    },
+    language:{
+        type: String,
+        required: true,
+    },
+    form:{
+        type: String,
+        required: true,
+    },
+    pageNumber:{
+        type: Number,
+        required: true,
+    },
     bookPrice:{
         type: Number,
         required: true,
