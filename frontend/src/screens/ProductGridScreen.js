@@ -202,54 +202,54 @@ const ProductGridScreen = () => {
                   <div className="form-check">
                     <input className="form-check-input" type="radio" name='flexRadioDefault' id="flexRadioDefaultrating1" />
                     <label className="form-check-label rating" for="flexRadioDefaultrating1">
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
                     </label>
                   </div>
                
                   <div className="form-check">
                     <input className="form-check-input" type="radio" name='flexRadioDefault' id="flexRadioDefaultrating2"  />
                     <label className="form-check-label rating" for="flexRadioDefaultrating2">
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaRegStar/></spa>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaRegStar/></span>
                     </label>
                   </div>
               
                   <div className="form-check">
                     <input className="form-check-input" type="radio" name='flexRadioDefault' id="flexRadioDefaultrating3"  />
                     <label className="form-check-label rating" for="flexRadioDefaultrating3">
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaRegStar/></spa>
-                          <spa><FaRegStar/></spa>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaRegStar/></span>
+                          <span><FaRegStar/></span>
                     </label>
                   </div>
             
                   <div className="form-check">
                     <input className="form-check-input" type="radio" name='flexRadioDefault' id="flexRadioDefaultrating4" />
                     <label className="form-check-label rating" for="flexRadioDefaultrating4">
-                          <spa><FaStar/></spa>
-                          <spa><FaStar/></spa>
-                          <spa><FaRegStar/></spa>
-                          <spa><FaRegStar/></spa>
-                          <spa><FaRegStar/></spa>
+                          <span><FaStar/></span>
+                          <span><FaStar/></span>
+                          <span><FaRegStar/></span>
+                          <span><FaRegStar/></span>
+                          <span><FaRegStar/></span>
                     </label>
                   </div>
                      <div className="form-check">
                     <input className="form-check-input" type="radio" name='flexRadioDefault' id="flexRadioDefaultrating5"  />
                     <label className="form-check-label rating" for="flexRadioDefaultrating5">
-                          <spa><FaStar/></spa>
-                          <spa><FaRegStar/></spa>
-                          <spa><FaRegStar/></spa>
-                          <spa><FaRegStar/></spa>
-                          <spa><FaRegStar/></spa>
+                          <span><FaStar/></span>
+                          <span><FaRegStar/></span>
+                          <span><FaRegStar/></span>
+                          <span><FaRegStar/></span>
+                          <span><FaRegStar/></span>
                     </label>
                   </div>
                 </div>

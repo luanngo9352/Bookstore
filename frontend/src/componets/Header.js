@@ -1,10 +1,26 @@
-import {Badge,Navbar,Nav,Container} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import {Badge,Navbar,Nav,Container, NavDropdown} from 'react-bootstrap';
 import { LinkContainer} from 'react-router-bootstrap'
 import {BsCart,BsFillPersonFill,BsFillHeartFill,BsSearch} from 'react-icons/bs';
-import { useSelector } from 'react-redux'; 
+import { useLogoutMutation } from '../slices/usersApiSlice';
+import {logout} from '../slices/authSlice';
+import { useSelector, useDispatch} from 'react-redux'; 
 const Header = () => {
-    const { cartItems} = useSelector((state) => state.cart )
-   
+    const { cartItems} = useSelector((state) => state.cart );
+   const { userInfo} = useSelector ((state) => state.auth);
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+   const [logoutApiCall]= useLogoutMutation();
+   const logoutHandler = async () =>{
+    try {
+        await logoutApiCall().unwrap()
+        dispatch(logout())
+        navigate('/login')
+    } catch (err){
+        console.log(err)
+    
+   }
+}
   return (
     <header>
         <Navbar bg = "dark" variant='dark' expand= "lg" collapseOnSelect>
@@ -39,10 +55,20 @@ const Header = () => {
                         </Nav.Link>
                         </LinkContainer>
                         </div>
-                        <LinkContainer to ='/login'>
+                        {userInfo ? (
+                            <NavDropdown title = {userInfo.name} id = 'username'>
+                                <LinkContainer to = '/profile'>
+                                <NavDropdown.Item>Thông tin cá nhân</NavDropdown.Item>
+                                </LinkContainer>
+                                <NavDropdown.Item onClick={logoutHandler}>
+                                    Đăng xuất
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        ) : (<LinkContainer to ='/login'>
                         <Nav.Link title='Tài khoản'><BsFillPersonFill size={20}/>
                         </Nav.Link>
-                        </LinkContainer>
+                        </LinkContainer>)}
+                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

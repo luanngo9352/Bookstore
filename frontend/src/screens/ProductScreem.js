@@ -9,6 +9,7 @@ import { useGetProductDetailQuery } from '../slices/productsApiSlice';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {addToCart} from '../slices/cartSlice'
+import { ToastContainer, toast } from 'react-toastify';
 const ProductScreem = () => {
   const navigate = useNavigate();
   const dispatch =useDispatch(); 
@@ -33,8 +34,14 @@ const ProductScreem = () => {
   }
   const addToCartHandler = () =>{
       dispatch (addToCart({...product , qty}))
+      showToastMessage();
    
   }
+  const showToastMessage = () => {
+    toast.success("Thêm sản phẩm vào giỏi hàng thành công !", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
   return (
    <>
    {isLoading ? (
@@ -50,10 +57,10 @@ const ProductScreem = () => {
                                 <div className=' col-md-6'>
                                         <h3>{product.bookName}</h3>
                                           <div className='row row-cols-2 my-3'>
-                                              <div class="col"><span>Thể loại: {product.category}</span></div>
-                                              <div class="col"><span>Tên tác giả: {product.author}</span></div>
-                                              <div class="col"><span>Nhà xuất bản: {product.publisher}</span></div>
-                                              <div class="col"><span>Hình thức: {product.form}</span></div>
+                                              <div className="col"><span>Thể loại: <span style={{ fontWeight: '600'}}>{product.category}</span></span></div>
+                                              <div className="col"><span>Tên tác giả: <span style={{ fontWeight: '600'}}>{product.author}</span></span></div>
+                                              <div className="col"><span>Nhà xuất bản: <span style={{ fontWeight: '600'}}>{product.publicCompany}</span></span></div>
+                                              <div className="col"><span>Hình thức: <span style={{ fontWeight: '600'}}>{product.form}</span></span></div>
                                           </div>
                                           <div className='product-screem mb-3'>
                                             <div className='row '>
@@ -95,6 +102,7 @@ const ProductScreem = () => {
                                                 <span className='me-2 mb-10'><BsCart size={20}/></span>
                                                 <span>Thêm Vào Giỏi Hàng</span>        
                                               </Button>
+                                              <ToastContainer/>
                                               </div>
                                               <div className='col'>
                                               <Button className='btn-block'
@@ -129,7 +137,7 @@ const ProductScreem = () => {
                           <div className='container'>
                             <div className='row mb-4'>
                                 <div className='col-sm-2'><span>Nhà Xuất Bản</span></div>
-                                <div className='col-sm-10'> Thai hoai</div>
+                                <div className='col-sm-10'> {product.publicCompany}</div>
                             </div>
                             <div className='row mb-4'>
                                 <div className='col-sm-2'><span>Tác Giả</span></div>
@@ -141,15 +149,15 @@ const ProductScreem = () => {
                             </div>
                             <div className='row mb-4'>
                                 <div className='col-sm-2'><span>Ngôn Ngữ</span></div>
-                                <div className='col-sm-10'> Thai hoai</div>
+                                <div className='col-sm-10'>{product.language}</div>
                             </div>
                             <div className='row mb-4'>
                                 <div className='col-sm-2'><span>Hình Thức</span></div>
-                                <div className='col-sm-10'> Thai hoai</div>
+                                <div className='col-sm-10'>{product.form}</div>
                             </div>
                             <div className='row mb-4'>
                                 <div className='col-sm-2'><span>Số Trang</span></div>
-                                <div className='col-sm-10'> Thai hoai</div>
+                                <div className='col-sm-10'> {product.pageNumber}</div>
                             </div>
                           </div>
                         <hr/>
@@ -172,10 +180,10 @@ const ProductScreem = () => {
                         <div className=' col-md-6'>
                                 <h3>{product.bookName}</h3>
                                   <div className='row row-cols-2 my-3'>
-                                      <div class="col"><span>Thể loại: {product.category}</span></div>
-                                      <div class="col"><span>Tên tác giả: {product.author}</span></div>
-                                      <div class="col"><span>Nhà xuất bản: {product.publisher}</span></div>
-                                      <div class="col"><span>Hình thức: {product.form}</span></div>
+                                      <div className="col"><span>Thể loại: {product.category}</span></div>
+                                      <div className="col"><span>Tên tác giả: {product.author}</span></div>
+                                      <div className="col"><span>Nhà xuất bản: {product.publisher}</span></div>
+                                      <div className="col"><span>Hình thức: {product.form}</span></div>
                                   </div>
                                   <div className='product-screem mb-3'>
                                     <div className='row '>

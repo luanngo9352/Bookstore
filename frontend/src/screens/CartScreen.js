@@ -39,6 +39,9 @@ const CartScreen = () => {
     totalcalc: 0,
   }
   totalItem.totalcalc = totalItem.total+totalItem.ship
+  const checkoutHandler = () =>{
+    navigate('/login?redirect=/shipping');
+  }
   return (
     <>
      <section className='py-5'>
@@ -105,11 +108,37 @@ const CartScreen = () => {
                               <div id="order_summary">
                                   <h4>Chi tiết đơn hàng</h4>
                                   <hr />
-                                  <p>Thành tiền:  <span>{ totalItem.total } </span></p>
-                                  <p>Phí vận chuyển: <span>{ totalItem.ship} </span></p>
-                                  <p>Tổng tiền: <span>{ totalItem.totalcalc } </span></p>
+                                  <div className="row">
+                                    <div className="col-8">
+                                  <p>Thành tiền:  
+                                  </p>
+                                  </div>
+                                  <div className="col-4">
+                                  <span>{ totalItem.total } </span>
+                                  </div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="col-8">
+                                  <p>Phí vận chuyển:  
+                                  </p>
+                                  </div>
+                                  <div className="col-4">
+                                  <span>{ totalItem.ship } </span>
+                                  </div>
+                                  </div>
+                                  <div className="row" style={{ fontWeight: '650'}}>
+                                    <div className="col-8">
+                                  <p>Tổng số tiền:  
+                                  </p>
+                                  </div>
+                                  <div className="col-4" style={{ fontSize: '20px', color: 'red' }}>
+                                  <span>{ totalItem.totalcalc } </span>
+                                  </div>
+                                  </div>
                                   <hr />
-                                 
+                                  <div className="d-flex justify-content-center ">
+                                  <button type="button"  onClick={checkoutHandler} className="btn btn-danger w-75" >THANH TOÁN</button>
+                                  </div>
                               </div>
                         </div>
                </div>
