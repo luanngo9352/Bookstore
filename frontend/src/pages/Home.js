@@ -143,7 +143,7 @@ const Home = () => {
            
     <div className='col-12 button-home'>
         <Link to={ '/all-product'}>
-    <button type="button" className="btn btn-primary d-flex justify-content-center ">Primary</button>
+    <button type="button" className="btn btn-primary d-flex justify-content-center ">Xem Thêm</button>
         </Link>
     </div>
     </section>

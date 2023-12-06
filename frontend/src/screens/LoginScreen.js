@@ -72,14 +72,15 @@ const LoginScreen = () => {
    <section  style={{backgroundColor: 'white'}} className="vh-100">
   <div className="container-fluid h-custom">
     <div className="row d-flex justify-content-center align-items-center h-100">
-      <div className="col-md-9 col-lg-6 col-xl-3">
+      <div className="col-md-4">
         <img src={loginimg}
-          className="img-fluid" alt="loginImg" />
+          className="img-fluid" alt="loginImg" style={{borderStyle: 'none'}}/>
       </div>
-      <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <div className='col-md-2'></div>
+      <div className="col-md-5">
         <form onSubmit={submitHandler} >
           <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-            <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+            <p className="lead fw-normal mb-0 me-3">Đăng nhập bằng</p>
             <button type="button" className="btn btn-primary btn-floating mx-1">
               < BsFacebook/>
             </button>
@@ -90,20 +91,20 @@ const LoginScreen = () => {
           </div>
 
           <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0">Or</p>
+            <p className="text-center fw-bold mx-3 mb-0">HOẶC</p>
           </div>
 
           {/* <!-- Email input --> */}
           <div className="form-outline mb-4">
             <input type="email" id="email_field"  value={email} onChange={(e) => setEmail(e.target.value)} className="form-control form-control-lg"
-              placeholder="Enter a valid email address" />
+              placeholder="Nhập địa chỉ email" />
            
           </div>
 
           {/* <!-- Password input --> */}
           <div className="form-outline mb-3">
             <input type="password" id="password_field" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control form-control-lg"
-              placeholder="Enter password" />
+              placeholder="Nhập mật khẩu" />
           </div>
 {/* 
           <div className="d-flex justify-content-between align-items-center">
@@ -119,10 +120,10 @@ const LoginScreen = () => {
 
           <div className="text-center text-lg-start mt-4 pt-2">
             <button type="submit" className="btn btn-primary btn-lg"
-              style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}} disabled= {isLoading}>Login</button>
+              style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}} disabled= {isLoading}>Đăng nhập</button>
               {/* {isLoading && <Loader />} */}
           </div>
-          <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to={redirect ? `/register?redirect=${redirect}`:'/register' }>Register</Link></p>
+          <p className="small fw-bold mt-2 pt-1 mb-0">Bạn chưa có tài khoản? <Link to={redirect ? `/register?redirect=${redirect}`:'/register' }>Đăng ký</Link></p>
         </form>
       </div>
     </div>

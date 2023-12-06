@@ -9,7 +9,7 @@ import { useGetProductDetailQuery } from '../slices/productsApiSlice';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {addToCart} from '../slices/cartSlice'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 const ProductScreem = () => {
   const navigate = useNavigate();
   const dispatch =useDispatch(); 
@@ -102,7 +102,7 @@ const ProductScreem = () => {
                                                 <span className='me-2 mb-10'><BsCart size={20}/></span>
                                                 <span>Thêm Vào Giỏi Hàng</span>        
                                               </Button>
-                                              <ToastContainer/>
+                                           
                                               </div>
                                               <div className='col'>
                                               <Button className='btn-block'
