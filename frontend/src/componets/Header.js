@@ -34,7 +34,7 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                         <div className="input-group input-group-sm px-3" style={{maxWidth: "400px"}}>
                             <input type="text" class="form-control py-2" placeholder="Nhập tên sách" aria-label="Nhâp tên sách" aria-describedby="basic-addon2"/>
-                            <span className="input-group-text " id="basic-addon2"><BsSearch size={15}/></span>
+                            <span className="input-group-sreach " id="basic-addon2"><BsSearch size={15}/></span>
                         </div>
                     <Nav className="ms-auto">
                         <LinkContainer to = '/favorite'>

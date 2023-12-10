@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import { useState, useEffect} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 // import { Form, Button, Row, Col } from 'react-bootstrap'
@@ -121,7 +121,7 @@ const LoginScreen = () => {
           <div className="text-center text-lg-start mt-4 pt-2">
             <button type="submit" className="btn btn-primary btn-lg"
               style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}} disabled= {isLoading}>Đăng nhập</button>
-              {/* {isLoading && <Loader />} */}
+             
           </div>
           <p className="small fw-bold mt-2 pt-1 mb-0">Bạn chưa có tài khoản? <Link to={redirect ? `/register?redirect=${redirect}`:'/register' }>Đăng ký</Link></p>
         </form>
