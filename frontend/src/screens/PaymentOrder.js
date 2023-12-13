@@ -1,12 +1,16 @@
-import {useState,useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import CheckoutSteps from '../componets/CheckoutSteps';
-import { Form } from "react-bootstrap";
-import { savePaymentMethod } from '../slices/cartSlice';
-const ConfirmOrder = () => {
-    const [paymentMethod,setPaymentMethod] = useState('PayPal')
-    const { cartItems, shippingAddress} = useSelector((state) => state.cart)
+import { useCreateOrderMutation } from '../slices/ordersSlice';
+import { clearCartItems } from '../slices/cartSlice';
+import Loader from '../componets/Loader';
+import { toast } from 'react-toastify';
+const PaymentOrder = () => {
+  
+    const { cartItems, shippingAddress, paymentMethhod,itemsPrice,itemsShip,totalPrice} = useSelector((state) => state.cart)
+    console.log(cartItems)
+    const [createOrder, {isLoading}] = useCreateOrderMutation()
     const {userInfo} = useSelector((state) =>state.auth)
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -19,33 +23,47 @@ const ConfirmOrder = () => {
       }
       totalItem.totalcalc = totalItem.total + totalItem.ship
       useEffect (() => {
-        if(!shippingAddress){
+        if(!shippingAddress || !paymentMethhod){
             navigate('/shipping')
         }
-      }, [shippingAddress,navigate]);
+      }, [shippingAddress,paymentMethhod,navigate]);
 
-      const processToPayment = (e) => {
-        e.preventDefault()
-        dispatch(savePaymentMethod(paymentMethod))
-        navigate('/payment')
-    }
+      const placeOrderHandler = async () => {
+        try {
+          console.log(22222)
+          const res = await createOrder({
+            orderItems: cartItems,
+            shippingAddress: shippingAddress,
+            paymentMethod: paymentMethhod,
+            itemsPrice: itemsPrice,
+            shippingPrice: itemsShip,
+            totalPrice: totalPrice,
+          }).unwrap();
+          dispatch(clearCartItems());
+          navigate(`/order/${res._id}`);
+        } catch (error) {
+          toast.error(error);
+        }
+      };
   return (
     <>
-        <CheckoutSteps shipping confirmOrder />
+        <CheckoutSteps shippingAndPayment placeOrder />
         <div className="row d-flex justify-content-between">
                 <div className="col-12 col-lg-8 mt-5 order-confirm">
 
-                    <h4 className="mb-3">Shipping Info</h4>
+                    <h4 className="mb-3">ĐỊA CHỈ GIAO HÀNG</h4>
                     <p><b>Name: </b> {userInfo.name}</p>
                     <p><b>Phone:</b> {shippingAddress.phone}</p>
                     <p className="mb-4"><b>Address:</b>{`${shippingAddress.city}, ${shippingAddress.district}, ${shippingAddress.wards}, ${shippingAddress.address}`} </p>
-                    <Form onSubmit={processToPayment}>
-                    <b>Phuong thuc thanh toan:</b> <Form.Check type='radio' label = 'PayPal or Creadit Card' id='PayPal' name='paymentMethod' value='PayPal' checked
-                    onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
-                    </Form>
                     <hr />
 
-                    <h4 className="mt-4">Your Cart Items:</h4>
+                    <h4>PHƯƠNG THỨC THANH TOÁN</h4>
+                    <b>Phương thức: </b>
+                    {paymentMethhod}
+                   
+                    <hr />
+
+                    <h4 className="mt-4">ĐƠN HÀNG:</h4>
 
                     {cartItems.map(item => (
                        <>
@@ -108,7 +126,16 @@ const ConfirmOrder = () => {
                                   </div>
                                   <hr />
                                   <div className="d-flex justify-content-center ">
-                                  <button type="submit" onClick={processToPayment} className="btn btn-danger w-75" >THANH TOÁN</button>
+                                  <button type='button'
+                                    className='btn btn-danger w-75'
+                                    disabled={cartItems === 0}
+                                    onClick={placeOrderHandler} >THANH TOÁN
+                                  
+                                  </button>
+
+                                  </div>
+                                  <div className='d-flex justify-content-center'>
+                                  {isLoading && <Loader />}
                                   </div>
                               </div>
                         </div>
@@ -119,4 +146,4 @@ const ConfirmOrder = () => {
   )
 }
 
-export default ConfirmOrder
+export default PaymentOrder

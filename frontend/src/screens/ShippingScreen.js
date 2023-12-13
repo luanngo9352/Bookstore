@@ -1,12 +1,14 @@
 import {useState} from 'react'
+import { Form } from "react-bootstrap";
 import { useDispatch,useSelector } from 'react-redux';
 import { saveShippingAddress } from '../slices/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import CheckoutSteps from '../componets/CheckoutSteps';
+import { savePaymentMethod } from '../slices/cartSlice';
 const ShippingScreen = () => {
     const cart = useSelector((state) =>state.cart);
     const { shippingInfo} = cart;
-
+    const [paymentMethod,setPaymentMethod] = useState('PayPal')
     const [city,setCity]= useState(shippingInfo?.city);
     const [ district,setDistrict] = useState(shippingInfo?.district);
     const [ wards, setWards] = useState(shippingInfo?.wards);
@@ -20,16 +22,21 @@ const ShippingScreen = () => {
     const submitShipping = (e) => {
         e.preventDefault()
         dispatch(saveShippingAddress({city,district,wards,address,phone}));
-        navigate('/confirm')
+        dispatch(savePaymentMethod(paymentMethod))
+        navigate('/payment')
     }
   return (
     <>
-    <CheckoutSteps shipping />
+    <CheckoutSteps shippingAndPayment />
      <div className="row d-flex  justify-content-center">
                 <div className="col-10 col-lg-5">
                         <h1 className="mb-4 d-flex justify-content-center">Shipping Info</h1>
                         <hr />
                     <form  encType="multipart/form-data"  onSubmit={submitShipping}>
+                        <div className="py-2 ">
+                        <b>Phuong thuc thanh toan:</b> <Form.Check type='radio' label = 'PayPal or Creadit Card' id='PayPal' name='paymentMethod' value='PayPal' checked
+                        onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
+                        </div>
                         <div className="form-group py-2 ">
                         <label>Tỉnh/Thành phố</label>
                             <input
