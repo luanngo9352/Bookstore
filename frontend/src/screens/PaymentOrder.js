@@ -30,7 +30,7 @@ const PaymentOrder = () => {
 
       const placeOrderHandler = async () => {
         try {
-          console.log(22222)
+         
           const res = await createOrder({
             orderItems: cartItems,
             shippingAddress: shippingAddress,
