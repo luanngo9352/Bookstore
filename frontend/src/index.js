@@ -17,12 +17,17 @@ import store from './store';
 import PrivateRoute from './componets/PrivateRoute';
 import ProductScreem from './screens/ProductScreem';
 import ProductGridScreen from './screens/ProductGridScreen';
+import AdminRoute from './componets/AdminRoute';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import CartScreen from './screens/CartScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentOrder from './screens/PaymentOrder';
 import OrderScreen from './screens/OrderScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import ListOrderScreen from './screens/ListOrderScreen';
+import DashboardScreen from './screens/admin/DashboardScreen';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const router = createBrowserRouter(
   createRoutesFromElements (
@@ -37,7 +42,15 @@ const router = createBrowserRouter(
       <Route path='/shipping' element= {<ShippingScreen/>}/>
       <Route path='/payment' element ={<PaymentOrder/>}/>
       <Route path='/order/:id' element ={<OrderScreen/>}/>
+      <Route path='/profile' element ={<ProfileScreen/>}/>
+      <Route path='/listorder' element ={<ListOrderScreen/>}/>
       </Route>
+
+      <Route path='' element = {<AdminRoute/>}/>
+      <Route path='/admin/dashboard' element={<DashboardScreen/>}>
+      </Route>
+
+      
     </Route>
   )
 )
@@ -45,7 +58,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <PayPalScriptProvider deferLoading={true}>
     <RouterProvider router={router} />
+    </PayPalScriptProvider>
     </Provider>
   </React.StrictMode>
 );

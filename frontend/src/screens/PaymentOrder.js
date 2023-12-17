@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 const PaymentOrder = () => {
   
     const { cartItems, shippingAddress, paymentMethhod,itemsPrice,itemsShip,totalPrice} = useSelector((state) => state.cart)
-    console.log(cartItems)
+    console.log(itemsPrice)
     const [createOrder, {isLoading}] = useCreateOrderMutation()
     const {userInfo} = useSelector((state) =>state.auth)
     const dispatch = useDispatch();
@@ -47,14 +47,14 @@ const PaymentOrder = () => {
       };
   return (
     <>
-        <CheckoutSteps shippingAndPayment placeOrder />
+        <CheckoutSteps shippingAndPayment confiOrder />
         <div className="row d-flex justify-content-between">
                 <div className="col-12 col-lg-8 mt-5 order-confirm">
 
                     <h4 className="mb-3">ĐỊA CHỈ GIAO HÀNG</h4>
-                    <p><b>Name: </b> {userInfo.name}</p>
-                    <p><b>Phone:</b> {shippingAddress.phone}</p>
-                    <p className="mb-4"><b>Address:</b>{`${shippingAddress.city}, ${shippingAddress.district}, ${shippingAddress.wards}, ${shippingAddress.address}`} </p>
+                    <p><b>Tên: </b> {userInfo.name}</p>
+                    <p><b>Số điện thoại:</b> {shippingAddress.phone}</p>
+                    <p className="mb-4"><b>Địa chỉ:</b>{`${shippingAddress.city}, ${shippingAddress.district}, ${shippingAddress.wards}, ${shippingAddress.address}`} </p>
                     <hr />
 
                     <h4>PHƯƠNG THỨC THANH TOÁN</h4>

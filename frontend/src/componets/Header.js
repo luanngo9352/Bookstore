@@ -60,6 +60,9 @@ const Header = () => {
                                 <LinkContainer to = '/profile'>
                                 <NavDropdown.Item>Thông tin cá nhân</NavDropdown.Item>
                                 </LinkContainer>
+                                <LinkContainer to = '/listorder'>
+                                <NavDropdown.Item>Thông tin đơn hàng</NavDropdown.Item>
+                                </LinkContainer>
                                 <NavDropdown.Item onClick={logoutHandler}>
                                     Đăng xuất
                                 </NavDropdown.Item>
