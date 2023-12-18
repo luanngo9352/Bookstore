@@ -11,6 +11,7 @@ const DashboardScreen = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
   const { data: orders } = useGetOrderQuery();
   const { data: users } = useGetUsersQuery();
+  console.log(products);
 
   const outOfStock = useMemo(() => {
     if (!products) return 0;
