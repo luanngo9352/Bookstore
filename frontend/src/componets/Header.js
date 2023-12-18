@@ -33,7 +33,7 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                         <div className="input-group input-group-sm px-3" style={{maxWidth: "400px"}}>
-                            <input type="text" class="form-control py-2" placeholder="Nhập tên sách" aria-label="Nhâp tên sách" aria-describedby="basic-addon2"/>
+                            <input type="text" className="form-control py-2" placeholder="Nhập tên sách" aria-label="Nhâp tên sách" aria-describedby="basic-addon2"/>
                             <span className="input-group-sreach " id="basic-addon2"><BsSearch size={15}/></span>
                         </div>
                     <Nav className="ms-auto">
@@ -70,8 +70,22 @@ const Header = () => {
                         ) : (<LinkContainer to ='/login'>
                         <Nav.Link title='Tài khoản'><BsFillPersonFill size={20}/>
                         </Nav.Link>
-                        </LinkContainer>)}
-                        
+                        </LinkContainer>)
+                        }
+                                        {/* Admin Links */}
+                            {userInfo && userInfo.isAdmin && (
+                                <NavDropdown title='Admin' id='adminmenu'>
+                                <LinkContainer to='/admin/dashboard'>
+                                    <NavDropdown.Item>Dasbord</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/admin/orderlist'>
+                                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/admin/userlist'>
+                                    <NavDropdown.Item>Users</NavDropdown.Item>
+                                </LinkContainer>
+                                </NavDropdown>
+                            )}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -56,7 +56,7 @@ const CartScreen = () => {
                     <img src={imgicon} alt='empty cart' />
                     <p>Chưa có sản phẩm trong giỏ hàng của bạn.</p>
                     <Link to = {"/"}>
-                    <button type="button" class="btn btn-danger w-75">MUA SẮM NGAY</button>
+                    <button type="button" className="btn btn-danger w-75">MUA SẮM NGAY</button>
                     </Link>
                </div>
           </div>

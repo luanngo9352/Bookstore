@@ -8,7 +8,6 @@ import { FaTimes } from 'react-icons/fa';
 
 const ListOrderScreen = () => {
     const {data: orders ,isLoading, error }= useGetMyOrderQuery();
-    console.log(orders)
   return (
     <section>
     <div className="container">
