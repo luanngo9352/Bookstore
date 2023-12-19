@@ -50,7 +50,7 @@ const createProduct = asyncHandler (async (req, res)=> {
         category: 'Sample category',
         author: 'Sample author',
         publicCompany: 'Sample public company',
-        language: 'English',
+        language: 'Sample language',
         form: 'Sample form',
         pageNumber: 0,
         bookPrice: 0,
@@ -68,7 +68,7 @@ const createProduct = asyncHandler (async (req, res)=> {
 // @access   Private/Admin
 const updateProduct = asyncHandler (async (req, res)=> {
     const {bookName, bookPrice, bookDetail, bookImage, author,
-        category, publicCompany, bookQuaranty } = req.body;
+        category, publicCompany, bookQuaranty, language, form, pageNumber } = req.body;
 
     const product = await Product.findById(req.params.id);
 
@@ -80,7 +80,10 @@ const updateProduct = asyncHandler (async (req, res)=> {
         product.author = author;
         product.category = category;
         product.publicCompany = publicCompany;
-        product.bookQuaranty = bookQuaranty;
+        product.bookQuaranty = bookQuaranty;t
+        product.language = language;
+        product.form = form;
+        product.pageNumber = pageNumber;
 
         const updatedProduct = await product.save();
         res.json(updatedProduct);

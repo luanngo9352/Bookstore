@@ -26,30 +26,37 @@ const productSchema = mongoose.Schema(
     bookName:{
         type: String,
         required: true,
+        default: 'Sample name',
     },
     category:{
         type: String,
         required: true,
+        default: 'Sample category'
     },
     author:{
         type: String,
         required: true,
+        default: 'Sample author',
     },
     publicCompany:{
         type: String,
         required: true,
+        default: 'Sample public company',
     },
     language:{
         type: String,
         required: true,
+        default: 'English',
     },
     form:{
         type: String,
         required: true,
+        default: 'Sample form',
     },
     pageNumber:{
         type: Number,
         required: true,
+        default: 0,
     },
     bookPrice:{
         type: Number,
@@ -59,10 +66,12 @@ const productSchema = mongoose.Schema(
     bookDetail:{
         type: String,
         required: true,
+        default: 'Sample description',
     },
     bookImage:{
         type: String,
-        required: true
+        required: true,
+        default: '/imageshome/tieuthuyet.jpg',
     },
     bookQuaranty:{
         type: Number,
