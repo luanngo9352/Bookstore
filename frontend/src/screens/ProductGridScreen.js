@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import Product from "../componets/Product";
 import Loader from "../componets/Loader";
 import Message from "../componets/Message";
+import { useParams } from "react-router-dom";
+import Paginate from "../componets/Paginate";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 const ProductGridScreen = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const {pageNumber} = useParams();
+  const { data: products, isLoading, error } = useGetProductsQuery({pageNumber});
+
+  
+  const pages = useMemo(() => {
+    if (!products) return 0;
+    
+    if(products.pages)
+       return products.pages 
+
+  }, [products,]);
+  const page = useMemo(() => {
+    if (!products) return 0;
+         
+    if(products.page)
+    return products.page
+  }, [products]);
+
+  
   return (
     <>
       <section className="list-products py-5 ">
@@ -494,32 +514,19 @@ const ProductGridScreen = () => {
               ) : (
                 <>
                   <div className="product-card row row-cols-4">
-                    {products && products.products.map((product) => (
+                    {products.products && products.products.map((product) => (
                       <Product product={product} />
                     ))}
                   </div>
                 </>
               )}
+              <div className="d-flex justify-content-center mt-3">
+            <Paginate pages={pages} page={page}/>
             </div>
-            {/* <nav aria-label="Page navigation example" className="d-flex justify-content-center mt-3">
-                  <ul className="pagination">
-                    <li className="page-item disabled">
-                      <a className="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li className="page-item active"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item"><a className="page-link" href="#">4</a></li>
-                    <li className="page-item"><a className="page-link" href="#">5</a></li>
-                    <li className="page-item">
-                      <a className="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav> */}
+            </div>
+            {/* <div className="d-flex justify-content-center mt-3">
+            <Paginate pages={data.pages} page={data.page}/>
+            </div> */}
           </div>
         </div>
       </section>

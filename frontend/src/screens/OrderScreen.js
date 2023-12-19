@@ -3,14 +3,14 @@ import { Link,useParams } from 'react-router-dom'
 import Message from '../componets/Message'
 import Loader from '../componets/Loader'
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
-import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Card,Button} from 'react-bootstrap';
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import { useGetOrderDetailsQuery,usePayOrderMutation,useGetPayPalClientIdQuery} from '../slices/ordersSlice'
+import { useGetOrderDetailsQuery,usePayOrderMutation,useGetPayPalClientIdQuery,useDeliverOrderMutation} from '../slices/ordersSlice'
 const OrderScreen = () => {
     const {id: orderId} = useParams()
     const { data: order,refetch ,isLoading, error} = useGetOrderDetailsQuery(orderId)
-
+    
      const {
       data: paypal,
       isLoading: loadingPayPal,
@@ -19,9 +19,9 @@ const OrderScreen = () => {
     
     const [ payOrder, {isLoading: loadingPay}] = usePayOrderMutation()
     const { userInfo } = useSelector((state) => state.auth);
-
+    const [deliverOrder, {isLoading: loadingDeliver}]= useDeliverOrderMutation();
     const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
-  
+    
     useEffect(() => {
       if (!errorPayPal && !loadingPayPal && paypal.clientId) {
         const loadPaypalScript = async () => {
@@ -69,6 +69,17 @@ const OrderScreen = () => {
           return orderID;
         });
     }
+    const deliverHandler = async () => {
+      try{
+      await deliverOrder(orderId);
+      refetch();
+      toast.success('Cập nhật vận chuyển thành công')
+    } catch(err)
+    {
+      toast.error(err?.data?.message || err.message)
+    }
+
+    };
 
     return isLoading ? (
       <Loader />
@@ -185,16 +196,36 @@ const OrderScreen = () => {
                   ) : (
                     <div>
                       <div>
+                     
                         <PayPalButtons
                           createOrder={createOrder}
                           onApprove={onApprove}
                           onError={onError}
                         ></PayPalButtons>
+                       
                       </div>
                     </div>
                   )}
                 </ListGroup.Item>
               )}
+
+                  {loadingDeliver && <Loader />}
+
+                  {userInfo &&
+                    userInfo.isAdmin &&
+                    order.isPaid &&
+                    !order.isDelivered && (
+                      <ListGroup.Item>
+                        <Button
+                          type='button'
+                          className='btn btn-block'
+                          onClick={deliverHandler}
+                        >
+                          Mark As Delivered
+                        </Button>
+                      </ListGroup.Item>
+                    )}
+
           </ListGroup>
           </Card>
         </Col>

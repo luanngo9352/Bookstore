@@ -1,9 +1,11 @@
 import Product from '../componets/Product'
 import Loader from '../componets/Loader';
 import Message from '../componets/Message';
+import { useParams } from 'react-router-dom';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 const HomeScreen = () => {
-    const {data , isLoading, error} = useGetProductsQuery();
+    const {pageNumber } = useParams()
+    const {data , isLoading, error} = useGetProductsQuery({pageNumber});
 
       return (
         <>

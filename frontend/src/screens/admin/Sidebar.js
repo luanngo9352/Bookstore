@@ -12,16 +12,17 @@ const Sidebar = () => {
                     </li>
 
                     <li>
-                        <Link href="#productSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle"> Products</Link>
+                        {/* <Link href="#productSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle-admin"> Products</Link>
                         <ul className="collapse list-unstyled" id="productSubmenu">
-                            {/* <li>
+                            <li>
                                 <Link to="/admin/products"> All</Link>
                             </li>
 
                             <li>
                                 <Link to="/admin/product"> Create</Link>
-                            </li> */}
-                        </ul>
+                            </li>
+                        </ul> */}
+                        <Link to="/admin/productlist"> Products</Link>
                     </li>
 
                     <li>
