@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import {Badge,Navbar,Nav,Container, NavDropdown} from 'react-bootstrap';
 import { LinkContainer} from 'react-router-bootstrap'
-import {BsCart,BsFillPersonFill,BsFillHeartFill,BsSearch} from 'react-icons/bs';
+import {BsCart,BsFillPersonFill,BsFillHeartFill} from 'react-icons/bs';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import {logout} from '../slices/authSlice';
+import SearchBox from './SearchBox';
 import { useSelector, useDispatch} from 'react-redux'; 
 const Header = () => {
     const { cartItems} = useSelector((state) => state.cart );
@@ -32,10 +33,7 @@ const Header = () => {
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
-                        <div className="input-group input-group-sm px-3" style={{maxWidth: "400px"}}>
-                            <input type="text" className="form-control py-2" placeholder="Nhập tên sách" aria-label="Nhâp tên sách" aria-describedby="basic-addon2"/>
-                            <span className="input-group-sreach " id="basic-addon2"><BsSearch size={15}/></span>
-                        </div>
+                       <SearchBox/>
                     <Nav className="ms-auto">
                         <LinkContainer to = '/favorite'>
                         <Nav.Link title='Yêu thích'><BsFillHeartFill size={20}/>

@@ -40,7 +40,11 @@ const router = createBrowserRouter(
       <Route  index = {true} path="/" element = { <Home />} />
       <Route  path="/product/:id" element = { <ProductScreem />} />
       <Route path="/all-product" element={< ProductGridScreen/>}/>
+      <Route path="/all-product/search/:keyword" element={< ProductGridScreen/>}/>
+      <Route path="/all-product/filter/:category" element={< ProductGridScreen/>}/>
       <Route path="/all-product/page/:pageNumber" element={< ProductGridScreen/>}/>
+      <Route path="/all-product/search/:keyword/page/:pageNumber" element={< ProductGridScreen/>}/>
+      <Route path="/all-product/filter/:category/page/:pageNumber" element={< ProductGridScreen/>}/>
       <Route path="/login" element={< LoginScreen/>}/>
       <Route path="/register" element={< RegisterScreen/>}/>
       <Route path='/cart' element= { <CartScreen/>}/>

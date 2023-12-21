@@ -3,13 +3,29 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import Product from "../componets/Product";
 import Loader from "../componets/Loader";
 import Message from "../componets/Message";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import Paginate from "../componets/Paginate";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 const ProductGridScreen = () => {
-  const {pageNumber} = useParams();
-  const { data: products, isLoading, error } = useGetProductsQuery({pageNumber});
-
+  const {pageNumber,keyword,category} = useParams();
+  const { data: products, isLoading, error } = useGetProductsQuery({keyword,pageNumber,category});
+  const navigate = useNavigate();
+  const categories = [
+    'Tiểu Thuyết',
+    'Văn Học',
+    'Thiếu Nhi',
+    'Kinh Tế',
+    'Ngôn Tình',
+    'Tâm Lí',
+    "Manga",
+]
+const setCategorys = (category) => {
+  if (category) {
+    navigate(`/all-product/filter/${category.trim()}`);
+  } else {
+    navigate('/');
+  }
+};
   
   const pages = useMemo(() => {
     if (!products) return 0;
@@ -41,7 +57,7 @@ const ProductGridScreen = () => {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span>Show filter</span>
+                <span>Hiển thị bộ lọc</span>
               </button>
 
               <div
@@ -59,7 +75,7 @@ const ProductGridScreen = () => {
                         aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseOne"
                       >
-                        Related items
+                        Thể Loại
                       </button>
                     </h2>
                     <div
@@ -69,30 +85,17 @@ const ProductGridScreen = () => {
                     >
                       <div className="accordion-body">
                         <ul className="list-unstyled">
-                          <li>
-                            <p className="text-dark">Electronics </p>
-                          </li>
-                          <li>
-                            <p className="text-dark">Home items </p>
-                          </li>
-                          <li>
-                            <p className="text-dark">Books, Magazines </p>
-                          </li>
-                          <li>
-                            <p className="text-dark">Men's clothing </p>
-                          </li>
-                          <li>
-                            <p className="text-dark">Interiors items </p>
-                          </li>
-                          <li>
-                            <p className="text-dark">Underwears </p>
-                          </li>
-                          <li>
-                            <p className="text-dark">Shoes for men </p>
-                          </li>
-                          <li>
-                            <p className="text-dark">Accessories </p>
-                          </li>
+                        {categories.map(category => (
+                          <li
+                                style={{
+                                cursor: 'pointer',
+                                 listStyleType: 'none'
+                                }}
+                                onClick={() => setCategorys(category)}
+                                >
+                               {category}
+                            </li>
+                            ))}
                         </ul>
                       </div>
                     </div>
@@ -107,7 +110,7 @@ const ProductGridScreen = () => {
                         aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseTwo"
                       >
-                        Brands
+                        Nhà xuất bản
                       </button>
                     </h2>
                     <div
@@ -128,7 +131,7 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefault1"
                             >
-                              Mercedes
+                              Kim Đồng
                             </label>
                           </div>
 
@@ -143,7 +146,7 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefault2"
                             >
-                              Toyota
+                              NXB Hội Nhà Văn
                             </label>
                           </div>
 
@@ -158,7 +161,7 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefault3"
                             >
-                              Mitsubishi
+                              Văn Học
                             </label>
                           </div>
 
@@ -173,7 +176,7 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefault4"
                             >
-                              Nissan
+                             Trẻ
                             </label>
                           </div>
 
@@ -188,7 +191,7 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefault5"
                             >
-                              Honda
+                              Dân Trí
                             </label>
                           </div>
 
@@ -203,7 +206,7 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefault6"
                             >
-                              Suzuki
+                              Nhã Nam
                             </label>
                           </div>
                         </div>
@@ -220,7 +223,7 @@ const ProductGridScreen = () => {
                         aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseThree"
                       >
-                        Price
+                        Giá
                       </button>
                     </h2>
                     <div
@@ -231,7 +234,7 @@ const ProductGridScreen = () => {
                       <div className="accordion-body">
                         <div className="row mb-3">
                           <div className="col-6">
-                            <p className="mb-0">Min</p>
+                            <p className="mb-0">Nhỏ</p>
                             <div className="form-outline">
                               <input
                                 type="number"
@@ -244,7 +247,7 @@ const ProductGridScreen = () => {
                             </div>
                           </div>
                           <div className="col-6">
-                            <p className="mb-0">Max</p>
+                            <p className="mb-0">Lớn</p>
                             <div className="form-outline">
                               <input
                                 type="number"
@@ -252,7 +255,7 @@ const ProductGridScreen = () => {
                                 className="form-control"
                               />
                               <label className="form-label" for="typeNumber">
-                                $1,0000
+                                500,0000
                               </label>
                             </div>
                           </div>
@@ -262,7 +265,7 @@ const ProductGridScreen = () => {
                             type="button"
                             className="btn btn-outline-warning"
                           >
-                            apply
+                            Chọn
                           </button>
                         </div>
                       </div>
@@ -278,7 +281,7 @@ const ProductGridScreen = () => {
                         aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseFour"
                       >
-                        Size
+                        Hình thức
                       </button>
                     </h2>
                     <div
@@ -299,7 +302,7 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefaultform1"
                             >
-                              Nissan
+                              Bìa Cứng 
                             </label>
                           </div>
 
@@ -314,7 +317,7 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefaultform2"
                             >
-                              Honda
+                              Bìa Mềm
                             </label>
                           </div>
 
@@ -329,7 +332,60 @@ const ProductGridScreen = () => {
                               className="form-check-label"
                               for="flexRadioDefaultform3"
                             >
-                              Suzuki
+                              Bộ Hộp
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingThree">
+                      <button
+                        className="accordion-button text-dark bg-light"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpens-collapseFour"
+                        aria-expanded="false"
+                        aria-controls="panelsStayOpens-collapseFour"
+                      >
+                        Hình thức
+                      </button>
+                    </h2>
+                    <div
+                      id="panelsStayOpens-collapseFour"
+                      className="accordion-collapse collapse show"
+                      aria-labelledby="headingThree"
+                    >
+                      <div className="accordion-body">
+                        <div>
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefaultform1"
+                            />
+                            <label
+                              className="form-check-label"
+                              for="flexRadioDefaultform1"
+                            >
+                              Tiếng anh
+                            </label>
+                          </div>
+
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefaultform2"
+                            />
+                            <label
+                              className="form-check-label"
+                              for="flexRadioDefaultform2"
+                            >
+                              Tiếng việt
                             </label>
                           </div>
                         </div>
@@ -346,7 +402,7 @@ const ProductGridScreen = () => {
                         aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseFive"
                       >
-                        Ratings
+                        Đánh giá
                       </button>
                     </h2>
                     <div
@@ -521,12 +577,9 @@ const ProductGridScreen = () => {
                 </>
               )}
               <div className="d-flex justify-content-center mt-3">
-            <Paginate pages={pages} page={page}/>
+            <Paginate pages={pages} page={page} keyword={keyword ? keyword : '' }/>
             </div>
             </div>
-            {/* <div className="d-flex justify-content-center mt-3">
-            <Paginate pages={data.pages} page={data.page}/>
-            </div> */}
           </div>
         </div>
       </section>

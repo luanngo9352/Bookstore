@@ -85,10 +85,10 @@ const ProductScreem = () => {
                                           </div>
                                           <div className='product-screem mb-3'>
                                             <div className='row '>
-                                              <div className='col-sm-4'>
+                                              <div className='col-sm-5'>
                                                   <Rating  value={product.rating} text={`(${product.rating} Đánh Giá)`}/>
                                               </div>
-                                              <div className='col-sm-8'>
+                                              <div className='col-sm-7'>
                                               <strong className='font-c-status'>
                                                         {product.bookQuaranty > 0 ? 'Còn Hàng': 'Hết Hàng' }
                                                 </strong> 

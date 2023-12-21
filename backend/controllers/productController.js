@@ -9,16 +9,22 @@ const getProducts = asyncHandler(async (req, res) => {
     const page = Number(req.query.pageNumber) || 1;
   
     const keyword = req.query.keyword
-      ? {
-          name: {
-            $regex: req.query.keyword,
-            $options: 'i',
-          },
-        }
+      ? { bookName: { $regex: req.query.keyword, $options: 'i' } }
       : {};
-  
-    const count = await Product.countDocuments({ ...keyword });
-    const products = await Product.find({ ...keyword })
+
+      const category = req.query.category
+      ? { category: { $regex: req.query.category, $options: 'i' } }
+      : {};
+      console.log(category)
+      // const queryCopy = req.query.category;
+      // console.log(queryCopy)
+      // // Removing fields from the query
+      // const removeFields = ['keyword', 'limit', 'page']
+   
+      
+
+    const count = await Product.countDocuments({...keyword,...category });
+    const products = await Product.find({...keyword,...category })
       .limit(pageSize)
       .skip(pageSize * (page - 1));
   

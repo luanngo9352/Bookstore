@@ -24,6 +24,7 @@ import book22img from '../imageshome/oxford-resized-img.png'
 import book23img from '../imageshome/happerresized-img.png'
 import Marquee from "react-fast-marquee";
 import HomeScreen from '../screens/HomeScreen'
+import ProductCarousel from '../componets/ProductCarousel'
 import { Link } from 'react-router-dom'
 
 // const listItem = [{name:'example',thumbnail:book5img},
@@ -33,7 +34,7 @@ const Home = () => {
     <>
     <section className='home-wrapper-1 py-5'>
         <div className='container-xxl'>
-            <div className='row'>
+            {/* <div className='row'>
                 <div className='col-6'>
                     <div className='main-banner position-relative'> 
                         <img src={bookimg} className ="img-fuild rounded-3"alt='main banner' />
@@ -52,7 +53,9 @@ const Home = () => {
                         </div>
                 </div>
                 </div>
-            </div>
+            </div> */}
+        
+        <ProductCarousel />
         </div>
     </section>
     <section className='home-wrapper-2 py-5'>
