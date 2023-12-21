@@ -16,7 +16,7 @@ const ListOrderScreen = () => {
             <div className="card text-black" style={{borderRadius: '25px'}}>
             <div className="card-body p-md-5">
                 <div className="row justify-content-center">
-                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">THÔNG TIN CÁ NHÂN</p>
+                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">THÔNG TIN ĐƠN HÀNG</p>
                 {isLoading ? (
           <Loader />
         ) : error ? (
@@ -28,10 +28,10 @@ const ListOrderScreen = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>num</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái thanh toán</th>
+                <th>Trạng thái vận chuyển</th>
                 <th></th>
               </tr>
             </thead>
@@ -59,7 +59,7 @@ const ListOrderScreen = () => {
                     <LinkContainer to
                     ={`/order/${order._id}`}>
                       <Button className='btn-sm' variant='light'>
-                        Details
+                        Chi tiết
                       </Button>
                     </LinkContainer>
                   </td>

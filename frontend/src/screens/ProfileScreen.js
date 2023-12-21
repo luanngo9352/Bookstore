@@ -49,7 +49,7 @@ const ProfileScreen = () => {
 
                         <form className="px-md-4" onSubmit= {submitHandler}>
                         <div className=" mb-4">
-                            <label className='mb-2'>Ten nguoi dung: </label>
+                            <label className='mb-2'>Tên người dùng: </label>
                             <div className=" input-group flex-fill mb-0">
                             <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)}  placeholder="Tên nguoi dung" />
                             </div>
@@ -63,14 +63,14 @@ const ProfileScreen = () => {
                         </div>
 
                         <div className=" mb-4">
-                            <label className='mb-2'>May khau: </label>
+                            <label className='mb-2'>Mật khẩu:</label>
                             <div className=" input-group form-outline flex-fill mb-0">
                             <input type="password"  value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="Mật khẩu" />
                             </div>
                         </div>
 
                         <div className=" mb-4">
-                             <label className='mb-2'>Xac nhan may khau</label>
+                             <label className='mb-2'>Xác nhận mật khẩu:</label>
                             <div className="input-group flex-fill mb-0">
                             <input type="password"  value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control"  placeholder="Nhập lại mật khẩu"/>
                             </div>
