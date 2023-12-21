@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import Sidebar from "./Sidebar";
-import { useGetProductsQuery } from "../../slices/productsApiSlice";
+import { useGetProducts1Query } from "../../slices/productsApiSlice";
 import { useGetOrderQuery } from "../../slices/ordersSlice";
 import Message from "../../componets/Message";
 import Loader from "../../componets/Loader";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useGetUsersQuery } from "../../slices/usersApiSlice";
 // import {  useDispatch,useSelector } from 'react-redux'
 const DashboardScreen = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const { data: products, isLoading, error } = useGetProducts1Query();
   const { data: orders } = useGetOrderQuery();
   const { data: users } = useGetUsersQuery();
   console.log(products);
@@ -17,7 +17,7 @@ const DashboardScreen = () => {
     if (!products) return 0;
 
     let acc = 0;
-    products.products.map((product) => {
+    products.map((product) => {
       if (product.bookQuaranty === 0) {
         acc += 1;
       }
@@ -58,7 +58,7 @@ const DashboardScreen = () => {
                   <div className="card text-white bg-primary o-hidden h-100">
                     <div className="card-body">
                       <div className="text-center card-font-size">
-                        Total Amount
+                        Tổng doanh thu
                         <br /> <b>{totalAmount} VND</b>
                       </div>
                     </div>
@@ -69,15 +69,15 @@ const DashboardScreen = () => {
                 <div className="card text-white bg-success o-hidden h-100">
                   <div className="card-body">
                     <div className="text-center card-font-size">
-                      Products
-                      <br /> <b>{products && products.products.length}</b>
+                      Số Lượng Sách
+                      <br /> <b>{products && products.length}</b>
                     </div>
                   </div>
                   <Link
                     className="card-footer text-white clearfix small z-1"
-                    to="/admin/products"
+                    to="/admin/productlist"
                   >
-                    <span className="float-left">View Details</span>
+                    <span className="float-left">Chi Tiết</span>
                     <span className="float-right">
                       <i className="fa fa-angle-right"></i>
                     </span>
@@ -89,15 +89,15 @@ const DashboardScreen = () => {
                 <div className="card text-white bg-danger o-hidden h-100">
                   <div className="card-body">
                     <div className="text-center card-font-size">
-                      Orders
+                      Đơn Hàng
                       <br /> <b>{orders && orders.length}</b>
                     </div>
                   </div>
                   <Link
                     className="card-footer text-white clearfix small z-1"
-                    to="/admin/orders"
+                    to="/admin/orderlist"
                   >
-                    <span className="float-left">View Details</span>
+                    <span className="float-left">Chi Tiết</span>
                     <span className="float-right">
                       <i className="fa fa-angle-right"></i>
                     </span>
@@ -108,15 +108,15 @@ const DashboardScreen = () => {
                 <div className="card text-white bg-info o-hidden h-100">
                   <div className="card-body">
                     <div className="text-center card-font-size">
-                      Users
+                      Người dùng
                       <br /> <b>{users && users.length}</b>
                     </div>
                   </div>
                   <Link
                     className="card-footer text-white clearfix small z-1"
-                    to="/admin/users"
+                    to="/admin/userlist"
                   >
-                    <span className="float-left">View Details</span>
+                    <span className="float-left">Chi Tiết</span>
                     <span className="float-right">
                       <i className="fa fa-angle-right"></i>
                     </span>
@@ -127,7 +127,7 @@ const DashboardScreen = () => {
                 <div className="card text-white bg-warning o-hidden h-100">
                   <div className="card-body">
                     <div className="text-center card-font-size">
-                      Out of Stock
+                      Số Lượng Sách Hết Hàng
                       <br /> <b>{outOfStock}</b>
                     </div>
                   </div>

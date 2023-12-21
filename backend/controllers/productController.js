@@ -15,7 +15,7 @@ const getProducts = asyncHandler(async (req, res) => {
       const category = req.query.category
       ? { category: { $regex: req.query.category, $options: 'i' } }
       : {};
-      console.log(category)
+      
       // const queryCopy = req.query.category;
       // console.log(queryCopy)
       // // Removing fields from the query

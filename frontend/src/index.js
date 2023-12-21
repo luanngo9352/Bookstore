@@ -57,7 +57,7 @@ const router = createBrowserRouter(
       </Route>
 
       <Route path='' element = {<AdminRoute/>}>
-      {/* <Route path='/admin/dashboard' element={<DashboardScreen/>}/> */}
+      <Route path='/admin/dashboard' element={<DashboardScreen/>}/>
 
       <Route path='/admin/orderlist' element={<ListOrderAdminScreen />}/>
       <Route path='/admin/productlist' element={<ProductList/>}/>

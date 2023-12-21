@@ -34,7 +34,7 @@ const ShippingScreen = () => {
                         <hr />
                     <form  encType="multipart/form-data"  onSubmit={submitShipping}>
                         <div className="py-2 ">
-                        <b>Phuong thuc thanh toan:</b> <Form.Check type='radio' label = 'PayPal or Creadit Card' id='PayPal' name='paymentMethod' value='PayPal' checked
+                        <b>Phương thức thanh toán:</b> <Form.Check type='radio' label = 'PayPal or Creadit Card' id='PayPal' name='paymentMethod' value='PayPal' checked
                         onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
                         </div>
                         <div className="form-group py-2 ">
