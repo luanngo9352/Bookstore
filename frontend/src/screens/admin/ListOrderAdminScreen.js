@@ -23,15 +23,16 @@ const ListOrderAdminScreen = () => {
         </Message>
       ) : (
         <div className='col-md-10'>
+          <h1 className="mb-4 d-flex justify-content-center">THÔNG TIN ĐƠN HÀNG</h1>
+          <hr />
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
               <th>ID</th>
-              <th>USER</th>
-            
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>Tài khoản</th>
+              <th>Tổng tiền</th>
+              <th>Trạng thái thanh toán</th>
+              <th>Trạng thái vận chuyển</th>
               <th></th>
             </tr>
           </thead>
@@ -40,7 +41,7 @@ const ListOrderAdminScreen = () => {
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
-                <td>${order.totalPrice}</td>
+                <td>{order.totalPrice}VND</td>
                 <td>
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)
@@ -58,7 +59,7 @@ const ListOrderAdminScreen = () => {
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
                     <Button variant='light' className='btn-sm'>
-                      Details
+                      Chi tiết
                     </Button>
                   </LinkContainer>
                 </td>

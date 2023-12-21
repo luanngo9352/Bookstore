@@ -56,7 +56,9 @@ const Header = () => {
                         </LinkContainer>
                         </div>
                         {userInfo ? (
+                            
                             <NavDropdown title = {userInfo.name} id = 'username'>
+                               
                                 <LinkContainer to = '/profile'>
                                 <NavDropdown.Item>Thông tin cá nhân</NavDropdown.Item>
                                 </LinkContainer>
@@ -67,6 +69,7 @@ const Header = () => {
                                     Đăng xuất
                                 </NavDropdown.Item>
                             </NavDropdown>
+                            
                         ) : (<LinkContainer to ='/login'>
                         <Nav.Link title='Tài khoản'><BsFillPersonFill size={20}/>
                         </Nav.Link>
@@ -74,15 +77,18 @@ const Header = () => {
                         }
                                         {/* Admin Links */}
                             {userInfo && userInfo.isAdmin && (
-                                <NavDropdown title='Admin' id='adminmenu'>
+                                <NavDropdown  style={{paddingLeft: '10px'}} title='Admin' id='adminmenu'>
                                 <LinkContainer to='/admin/dashboard'>
                                     <NavDropdown.Item>Dasbord</NavDropdown.Item>
                                 </LinkContainer>
                                 <LinkContainer to='/admin/orderlist'>
-                                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                                    <NavDropdown.Item>Thông tin các đơn hàng</NavDropdown.Item>
                                 </LinkContainer>
                                 <LinkContainer to='/admin/userlist'>
-                                    <NavDropdown.Item>Users</NavDropdown.Item>
+                                    <NavDropdown.Item>Thông tin các tài khoản</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/admin/productlist'>
+                                    <NavDropdown.Item>Thông tin các sản phẩm</NavDropdown.Item>
                                 </LinkContainer>
                                 </NavDropdown>
                             )}

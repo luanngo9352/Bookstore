@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { Form } from 'react-bootstrap';
 import Message from '../../componets/Message';
 import Loader from '../../componets/Loader';
 
 import { toast } from 'react-toastify';
-import { useUpdateProductMutation,useGetProductDetailQuery } from '../../slices/productsApiSlice';
+import { useUpdateProductMutation,useGetProductDetailQuery, useUploadProductImageMutation } from '../../slices/productsApiSlice';
 
 const UpdateProdctScreen = () => {
-    const { id: productId } = useParams();
+  const { id: productId } = useParams();
 
   const [bookName, setBookName] = useState('');
   const [category, setCategory] = useState('');
@@ -29,35 +29,61 @@ const UpdateProdctScreen = () => {
     error,
   } = useGetProductDetailQuery(productId);
   const [updateProduct, { isLoading: loadingUpdate }] =useUpdateProductMutation();
+  const [uploadProductImage, { isLoading: loadingUpload }] =
+  useUploadProductImageMutation();
   const navigate = useNavigate();
-  console.log(product)
-  const submitHandler = async (e) => {
-        e.preventDefault();
+//   const submitHandler = async (e) => {
+//         e.preventDefault();
 
-      const updatedProduct ={
-        productId,
-        bookName,
-        category,
-        author,
-        publicCompany,
-        language,
-        form,
-        pageNumber,
-        bookPrice,
-        bookImage,
-        bookQuaranty,
-        bookDetail,
-      }
-      const result = await updateProduct(updatedProduct);
-      if(result.error)
-      {
-        toast.error(result.error)
+//       const updatedProduct ={
+//         productId,
+//         bookName,
+//         category,
+//         author,
+//         publicCompany,
+//         language,
+//         form,
+//         pageNumber,
+//         bookPrice,
+//         bookImage,
+//         bookQuaranty,
+//         bookDetail,
+//       }
+//       const result = await updateProduct(updatedProduct);
+//       if(result.error)
+//       {
+//         toast.error(result.error)
 
-      }else{
-        toast.success('thang cong')
-        navigate('/admin/productlist')
-      }
+//       }else{
+//         toast.success('thang cong')
+//         navigate('/admin/productlist')
+//       }
 
+//   };
+
+const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await updateProduct({
+                productId,
+                bookName,
+                category,
+                author,
+                publicCompany,
+                language,
+                form,
+                pageNumber,
+                bookPrice,
+                bookImage,
+                bookQuaranty,
+                bookDetail,
+      });
+      toast.success('Product updated');
+      refetch();
+      navigate('/admin/productlist');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
     useEffect(() => {
@@ -76,11 +102,22 @@ const UpdateProdctScreen = () => {
     
     }
   }, [product]);
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setBookImage(res.image);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
   return (
    <>
-        <Link to='/admin/productlist' className='btn btn-light my-3'>
+        {/* <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
-      </Link>
+      </Link> */}
       
         {loadingUpdate && <Loader />}
         {isLoading ? (
@@ -90,12 +127,12 @@ const UpdateProdctScreen = () => {
         ) : (
             <div className="row d-flex  justify-content-center">
             <div className="col-10 col-lg-5">
-                    <h1 className="mb-4 d-flex justify-content-center">Shipping Info</h1>
+                    <h1 className="mb-4 d-flex justify-content-center">THÔNG TIN SẢN PHẨM</h1>
                     <hr />
                 <form  encType="multipart/form-data" onSubmit={submitHandler} >
                     
                     <div className="form-group py-2 ">
-                    <label>Name</label>
+                    <label>Tên sản phẩm</label>
                         <input
                             type="text"
                             className="form-control"
@@ -106,7 +143,7 @@ const UpdateProdctScreen = () => {
                     </div>
 
                     <div className="form-group py-2 ">
-                        <label >category</label>
+                        <label >Thể loại</label>
                         <input
                             type="text"
                             className="form-control"
@@ -117,7 +154,7 @@ const UpdateProdctScreen = () => {
                     </div>
 
                     <div className="form-group py-2 ">
-                        <label >athor</label>
+                        <label >Tác giả</label>
                         <input
                             type="text"
                             className="form-control"
@@ -128,7 +165,7 @@ const UpdateProdctScreen = () => {
                     </div>
 
                     <div className="form-group py-2 ">
-                        <label >publicCompany</label>
+                        <label >Công ti xuất bản</label>
                         <input
                             type="text"
                             value={publicCompany}
@@ -138,7 +175,7 @@ const UpdateProdctScreen = () => {
                         />
                     </div>
                     <div className="form-group py-2 ">
-                        <label >language</label>
+                        <label >Ngôn ngữ</label>
                         <input
                             type="text"
                             className="form-control"
@@ -148,7 +185,7 @@ const UpdateProdctScreen = () => {
                         />
                     </div>
                     <div className="form-group py-2 ">
-                        <label >form</label>
+                        <label >Hình thức</label>
                         <input
                             type="text"
                             className="form-control"
@@ -158,7 +195,7 @@ const UpdateProdctScreen = () => {
                         />
                     </div>
                     <div className="form-group py-2 ">
-                        <label >pageNumber</label>
+                        <label >Số trang</label>
                         <input
                             type="number"
                             className="form-control"
@@ -168,7 +205,7 @@ const UpdateProdctScreen = () => {
                         />  
                     </div>
                     <div className="form-group py-2 ">
-                        <label >bookPrice</label>
+                        <label >Giá tiền</label>
                         <input
                             type="number"
                             className="form-control"
@@ -176,23 +213,37 @@ const UpdateProdctScreen = () => {
                             onChange={(e) => setBookPrice(e.target.value)}
                         />
                     </div>
-                    {/* img div */}
                     <div className="form-group py-2 ">
-                        <label >bookQuaranty</label>
+                        <label >Hình ảnh sản phẩm</label>
+                            <Form.Control
+                                type='text'
+                                placeholder='Enter image url'
+                                value={bookImage}
+                                onChange={(e) => setBookImage(e.target.value)}
+                            ></Form.Control>
+                            <Form.Control
+                                label='Choose File'
+                                onChange={uploadFileHandler}
+                                type='file'
+                            ></Form.Control>
+                            {loadingUpload && <Loader />}
+                    </div>
+                    <div className="form-group py-2 ">
+                        <label >Số lượng tồn kho</label>
                         <input
                             type="number"
                             className="form-control"
                             value={bookQuaranty}
                             onChange={(e) => setBookQuaranty(e.target.value)}
-                        
                         />
                     </div>
                     <div className="form-group py-2 ">
                     <label htmlFor="description_field">Description</label>
                         <textarea className="form-control" rows="8" value={bookDetail} onChange={(e) => setBookDetail(e.target.value)}></textarea>
+                      
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-primary " >Tiếp tục</button>
+                        <button type="submit" className="btn btn-primary " >Cập nhật</button>
                     </div>
                 </form>
             </div>

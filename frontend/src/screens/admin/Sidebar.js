@@ -22,20 +22,20 @@ const Sidebar = () => {
                                 <Link to="/admin/product"> Create</Link>
                             </li>
                         </ul> */}
-                        <Link to="/admin/productlist"> Products</Link>
+                        <Link to="/admin/productlist">Thông tin các sản phẩm</Link>
                     </li>
 
                     <li>
-                        <Link to="/admin/orderlist"> Orders</Link>
+                        <Link to="/admin/orderlist">Thông tin các đơn hàng</Link>
                     </li>
 
                     <li>
-                        <Link to="/admin/users"> Users</Link>
+                        <Link to="/admin/userlist">Thông tin các tài khoản</Link>
                     </li>
 
-                    <li>
-                        <Link to="/admin/reviews"> Reviews</Link>
-                    </li>
+                    {/* <li>
+                        <Link to="/admin/reviews">Thông tin các đánh giá</Link>
+                    </li> */}
 
                 </ul>
             </nav>

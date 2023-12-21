@@ -55,7 +55,7 @@ const createProduct = asyncHandler (async (req, res)=> {
         pageNumber: 0,
         bookPrice: 0,
         bookDetail: 'Sample description',
-        bookImage: '/imageshome/tieuthuyet.jpg',
+        bookImage: '/images/sample.jpg',
         bookQuaranty: 0,
     })
 
@@ -80,7 +80,7 @@ const updateProduct = asyncHandler (async (req, res)=> {
         product.author = author;
         product.category = category;
         product.publicCompany = publicCompany;
-        product.bookQuaranty = bookQuaranty;t
+        product.bookQuaranty = bookQuaranty;
         product.language = language;
         product.form = form;
         product.pageNumber = pageNumber;

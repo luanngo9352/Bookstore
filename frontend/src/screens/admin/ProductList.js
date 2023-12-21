@@ -1,5 +1,5 @@
 import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button, Row, Col } from 'react-bootstrap';
+import { Table, Button, Col } from 'react-bootstrap';
 import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import Sidebar from './Sidebar';
@@ -7,23 +7,31 @@ import { toast } from 'react-toastify';
 import Message from '../../componets/Message';
 import Loader from '../../componets/Loader';
 import Paginate from '../../componets/Paginate';
-import { useGetProductsQuery,useCreateProductMutation } from '../../slices/productsApiSlice';
+import { useGetProductsQuery,useCreateProductMutation,useDeleteProductMutation} from '../../slices/productsApiSlice';
 const ProductList = () => {
     const {pageNumber} = useParams()
     const { data, isLoading, error, refetch } = useGetProductsQuery({pageNumber});
     const [ createProduct,{isLoading: loadingCreate}] = useCreateProductMutation();
+    const [deleteProduct, { isLoading: loadingDelete }] =useDeleteProductMutation();
     const createProductHandler= async ()=> {
-        if (window.confirm('Are you sure you want to create a new product?')) {
+        if (window.confirm('Bạn có muốn thêm sản phẩm mới?')) {
             try {
               await createProduct();
               refetch();
             } catch (err) {
-              toast.error(err?.data?.message || err.error);
+              toast.error('Thêm thất bại');
             }
           }
     }
-    const deleteHandler = (id) => {
-        console.log('id',id)
+    const deleteHandler = async (id) => {
+      if (window.confirm('Bạn có muốn xóa?')) {
+        try {
+          await deleteProduct(id);
+          refetch();
+        } catch (err) {
+          toast.error(err?.data?.message || err.error);
+        }
+      }
     }
   return (
     <>
@@ -38,21 +46,23 @@ const ProductList = () => {
       ) : (
         <>
         <div className='col-md-10'>
+          <h2 className='text-center'>THÔNG TIN CÁC SẢN PHẨM</h2>
             <Col className='text-end'>
             <Button className='my-3'onClick={createProductHandler} >
-                <FaPlus /> Create Product
+                <FaPlus />Thêm sản phẩm
             </Button>
             </Col>
             {loadingCreate && <Loader />}
+            {loadingDelete && <Loader />}
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
                 <th>ID</th>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th>Num</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá tiền</th>
+                <th>Số lượng tồn kho</th>
+                <th>Thể loại</th>
+                <th>Nhà xuất bản</th>
                 <th></th>
               </tr>
             </thead>
@@ -61,16 +71,20 @@ const ProductList = () => {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td >{product.bookName}</td>
-                  <td>${product.bookPrice}</td>
+                  <td>{product.bookPrice} VND</td>
                   <td>{product.bookQuaranty}</td>
                   <td>{product.category}</td>
                   <td>{product.publicCompany}</td>
                   <td>
+                    <div className=' row row-cols-lg-2 '>
+                      <div className='col'>
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>
                       <Button variant='light' className='btn-sm mx-2'>
                         <FaEdit />
                       </Button>
                     </LinkContainer>
+                    </div>
+                    <div className='col'>
                     <Button
                        
                       variant='danger'
@@ -79,6 +93,8 @@ const ProductList = () => {
                     >
                       <FaTrash style={{ color: 'white' }} />
                     </Button>
+                    </div>
+                    </div>
                   </td>
                 </tr>
               ))}
