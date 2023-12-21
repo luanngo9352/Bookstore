@@ -163,6 +163,14 @@ const getTopProducts = asyncHandler(async (req, res) => {
     res.status(200).json(products);
   });
 
+// @desc     Fetch all products
+// @route    Get api/products
+// @access   Public
+const getProducts1 = asyncHandler (async (req, res)=> {
+  const products = await Product.find({});
+  res.json(products);
+});
+
 export { 
     getProducts, 
     getProductById, 
@@ -171,4 +179,5 @@ export {
     deleteProduct,
     createProductReview,
     getTopProducts,
+    getProducts1,
 };
