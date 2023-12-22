@@ -1,8 +1,4 @@
 import React from 'react'
-import bookimg from '../imageshome/main_banner.png'
-import book2img from '../imageshome/Book2.jpg'
-import book3img from '../imageshome/Book3.jpg'
-import book4img from '../imageshome/Book5.jpg'
 import book5img from '../imageshome/tieuthuyet.jpg'
 import book6img from '../imageshome/vanhoc.jpg'
 import book7img from '../imageshome/thieunhis.jpg'
@@ -26,11 +22,23 @@ import Marquee from "react-fast-marquee";
 import HomeScreen from '../screens/HomeScreen'
 import ProductCarousel from '../componets/ProductCarousel'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-// const listItem = [{name:'example',thumbnail:book5img},
-// {name:'example1',thumbnail:book6img},{name:'example2',thumbnail:book7img},{name:'example3',thumbnail:book8img},,{name:'example3',thumbnail:book9img},,{name:'example3',thumbnail:book10img},{name:'example3',thumbnail:book11img}]
+
 const Home = () => {
-  return (
+    const navigate = useNavigate();
+    const categories = [{name:'Tiểu Thuyết',thumbnail:book5img},
+    {name:'Văn Học',thumbnail:book6img},{name:'Thiếu Nhi',thumbnail:book7img},{name:'Kinh Tế',thumbnail:book8img},,{name:'Ngôn Tình',thumbnail:book9img},{name:'Tâm Lí',thumbnail:book10img},{name:'Manga',thumbnail:book11img}]
+    
+    const setCategorys = (category) => {
+        if (category) {
+          navigate(`/all-product/filter/${category.trim()}`);
+        } else {
+          navigate('/');
+        }
+      };
+  
+    return (
     <>
     <section className='home-wrapper-1 py-5'>
         <div className='container-xxl'>
@@ -58,7 +66,7 @@ const Home = () => {
         <ProductCarousel />
         </div>
     </section>
-    <section className='home-wrapper-2 py-5'>
+    {/* <section className='home-wrapper-2 py-5'>
         <div className='container-xxl'>
             <div className='col-12 categories'>
             <span className='header-tile' >Danh Mục Sản Phẩm</span>
@@ -67,10 +75,12 @@ const Home = () => {
                 <div className='col-12'>
                     <div className='categories d-flex justify-content-between align-items-center'>
                         <div className='fhs_nowrap_two fhs_center_center'>
+                            
                             <div>
                                 <h6 style={{marginLeft: "6px"}}>Tiểu Thuyết </h6>
                             </div>
                             <img src={book5img} alt='novel' />
+                            
                         </div>
                         <div className='fhs_nowrap_two fhs_center_center'>
                             <div>
@@ -113,19 +123,24 @@ const Home = () => {
              </div>
            
         </div>
-    </section>
-    {/* <section className='home-wrapper-2 py-5'>
+    </section> */}
+    <section className='home-wrapper-2 py-5'>
         <div className='container-xxl'>
+        <div className='col-12 categories'>
+            <span className='header-tile' >Danh Mục Sản Phẩm</span>
+            </div>
              <div className='row'>
                 <div className='col-12'>
                     <div className='categories d-flex justify-content-between align-items-center'>
-                    {listItem.map(item => (
+                    {categories.map(item => (
                      <div className='item'>
-                    <span>
+                    <h6 style={{paddingLeft: '15px'}}>
                     {item.name}
-                    </span>
+                    </h6>
                     <div className='thumbnail'>
-                        <img src={item.thumbnail }>
+                        <img 
+                        onClick={() => setCategorys(item.name)}
+                         src={item.thumbnail }>
                         </img>
                     </div>
                     </div>
@@ -135,7 +150,7 @@ const Home = () => {
              </div>
            
         </div>
-    </section> */}
+    </section>
      <section className='list-products py-5 '>
             <div className='col-12 categories'>
                 <div className='header-tile' >
