@@ -29,7 +29,7 @@ const OrderScreen = () => {
             type: 'resetOptions',
             value: {
               'client-id': paypal.clientId,
-              currency: 'VND',
+              currency: 'USD',
             },
           });
           paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
