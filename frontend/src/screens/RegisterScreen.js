@@ -60,7 +60,7 @@ const RegisterScreen = () => {
                     <div className="row justify-content-center">
                     <div className="col-md-5">
 
-                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Đăng Kí</p>
 
                         <form className="px-md-4" onSubmit={submitHandler}>
 

@@ -63,6 +63,7 @@ const ProductList = () => {
                 <th>Số lượng tồn kho</th>
                 <th>Thể loại</th>
                 <th>Nhà xuất bản</th>
+                <th>Tên tác giả</th>
                 <th></th>
               </tr>
             </thead>
@@ -75,6 +76,7 @@ const ProductList = () => {
                   <td>{product.bookQuaranty}</td>
                   <td>{product.category}</td>
                   <td>{product.publicCompany}</td>
+                  <td>{product.author}</td>
                   <td>
                     <div className=' row row-cols-lg-2 '>
                       <div className='col'>

@@ -238,7 +238,7 @@ const submitHandler = async (e) => {
                         />
                     </div>
                     <div className="form-group py-2 ">
-                    <label htmlFor="description_field">Description</label>
+                    <label htmlFor="description_field">Mô tả</label>
                         <textarea className="form-control" rows="8" value={bookDetail} onChange={(e) => setBookDetail(e.target.value)}></textarea>
                       
                     </div>

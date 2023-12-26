@@ -153,7 +153,7 @@ const OrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.bookPrice} = ${item.qty * item.bookPrice}
+                          {item.qty} x {item.bookPrice} VND = {item.qty * item.bookPrice} VND
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -172,19 +172,19 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Thành tiền</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>{order.itemsPrice} VND</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Phí vận chuyển</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>{order.shippingPrice} VND</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tổng Số Tiền</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>{order.totalPrice} VND</Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && (
@@ -221,7 +221,7 @@ const OrderScreen = () => {
                           className='btn btn-block'
                           onClick={deliverHandler}
                         >
-                          Mark As Delivered
+                          Cập nhật trạng thái vận chuyển
                         </Button>
                       </ListGroup.Item>
                     )}

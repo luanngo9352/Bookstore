@@ -9,6 +9,7 @@ import { useGetProductDetailQuery, useCreateReviewMutation } from '../slices/pro
 import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import {addToCart} from '../slices/cartSlice'
+import { addToFavorite } from '../slices/favoriteSlice';
 import { toast } from 'react-toastify';
 const ProductScreem = () => {
   const navigate = useNavigate();
@@ -42,8 +43,18 @@ const ProductScreem = () => {
       showToastMessage();
    
   }
+  const addToFavoriteHandler = () =>{
+    dispatch (addToFavorite({...product}))
+    showToastMessageFavorite();
+ 
+}
   const showToastMessage = () => {
     toast.success("Thêm sản phẩm vào giỏi hàng thành công !", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const showToastMessageFavorite = () => {
+    toast.success("Thêm sản phẩm danh sách yêu thích !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
@@ -97,7 +108,7 @@ const ProductScreem = () => {
                                             </div>
                                           </div>  
                                           <div className='product-price mb-3'>
-                                            <span>${product.bookPrice} </span>
+                                            <span>{product.bookPrice} VND </span>
                                           </div>
                                           <div className='row mb-4'>
                                                 <div className="col-sm-2 d-flex align-items-center"><label> Số Lượng: </label></div>
@@ -137,6 +148,7 @@ const ProductScreem = () => {
                                               </div>
                                               <div className='col'>
                                               <Button className='btn-block'
+                                              onClick={addToFavoriteHandler}
                                               type='button'
                                               >
                                                 <span className='me-2 '><BsFillHeartFill size={20}/></span>

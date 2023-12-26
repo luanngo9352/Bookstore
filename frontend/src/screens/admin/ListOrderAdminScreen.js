@@ -44,14 +44,14 @@ const ListOrderAdminScreen = () => {
                 <td>{order.totalPrice}VND</td>
                 <td>
                   {order.isPaid ? (
-                    order.paidAt.substring(0, 10)
+                    <p>Đã vận chuyển vào {order.paidAt.substring(0, 10)}</p>
                   ) : (
                     <FaTimes style={{ color: 'red' }} />
                   )}
                 </td>
                 <td>
                   {order.isDelivered ? (
-                    order.deliveredAt.substring(0, 10)
+                    <p> Đã vận chuyển vào {order.deliveredAt.substring(0, 10)}</p>
                   ) : (
                     <FaTimes style={{ color: 'red' }} />
                   )}

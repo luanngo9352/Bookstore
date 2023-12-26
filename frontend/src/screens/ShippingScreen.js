@@ -29,12 +29,12 @@ const ShippingScreen = () => {
     <>
     <CheckoutSteps shippingAndPayment />
      <div className="row d-flex  justify-content-center">
-                <div className="col-10 col-lg-5">
-                        <h1 className="mb-4 d-flex justify-content-center">Shipping Info</h1>
+                <div className=" col-lg-5">
+                        <h1 className="mb-4 d-flex text-center justify-content-center">Địa Chỉ Và Phương Thứ Thanh Toán</h1>
                         <hr />
                     <form  encType="multipart/form-data"  onSubmit={submitShipping}>
                         <div className="py-2 ">
-                        <b>Phương thức thanh toán:</b> <Form.Check type='radio' label = 'PayPal or Creadit Card' id='PayPal' name='paymentMethod' value='PayPal' checked
+                        <b>Phương thức thanh toán:</b> <Form.Check type='radio' label = 'PayPal Hoặc Creadit Card' id='PayPal' name='paymentMethod' value='PayPal' checked
                         onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
                         </div>
                         <div className="form-group py-2 ">

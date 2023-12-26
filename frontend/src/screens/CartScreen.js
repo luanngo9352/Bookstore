@@ -82,7 +82,7 @@ const CartScreen = () => {
                                     </Link>
                               </div>
                               <div className="col-4 col-lg-2 mt-4 ">
-                                  <p id="card_item_price" style={{color: 'red', fontWeight: 'bold', fontSize: '1.2rem'}}>${item.bookPrice}</p>
+                                  <p id="card_item_price" style={{color: 'red', fontWeight: 'bold', fontSize: '1.2rem'}}>{item.bookPrice} VND</p>
                               </div>
                               <div className="col-4 col-lg-3 mt-4 ">
                                       <div className='input-group w-100' >

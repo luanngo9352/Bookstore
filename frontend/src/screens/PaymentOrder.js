@@ -80,7 +80,7 @@ const PaymentOrder = () => {
 
 
                                     <div className="col-4 col-lg-4 mt-4 mt-lg-0">
-                                        <p>{item.qty} x ${item.bookPrice} = <b>{totalItem.total}</b></p>
+                                        <p>{item.qty} x {item.bookPrice} VND = <b>{item.qty * item.bookPrice} VND</b></p>
                                     </div>
 
                                 </div>
