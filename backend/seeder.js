@@ -4,6 +4,10 @@ import colors from "colors";
 import users from "./data/users.js";
 import User from "./models/userModel.js";
 import Order from "./models/orderModel.js";
+import Form from "./models/formModel.js";
+import forms from "./data/forms.js";
+import PublicCompany from "./models/publicCompanyModel.js";
+import publicCompanies from "./data/publicCompanies.js";
 import products from "./data/products.js";
 import Product from "./models/productModel.js";
 import Category from "./models/categoryModel.js";
@@ -23,6 +27,8 @@ const importData = async() => {
         await User.deleteMany();
         await Category.deleteMany();
         await Author.deleteMany();
+        await Form.deleteMany();
+        await PublicCompany.deleteMany();
 
         const createUsers = await User.insertMany(users);
         
@@ -35,6 +41,8 @@ const importData = async() => {
         await Product.insertMany(sampleProducts);
         await Category.insertMany(categories);
         await Author.insertMany(authors);
+        await Form.insertMany(forms);
+        await PublicCompany.insertMany(publicCompanies);
 
         console.log('Data Imported!'.green.inverse);
         process.exit();
@@ -51,6 +59,8 @@ const destroyData = async() => {
         await User.deleteMany();
         await Category.deleteMany();
         await Author.deleteMany();
+        await Form.deleteMany();
+        await PublicCompany.deleteMany();
 
         console.log('Data Destroyed!'.green.inverse);
         process.exit();
