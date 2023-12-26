@@ -7,24 +7,26 @@ import Product from "../models/productModel.js";
 const getProducts = asyncHandler(async (req, res) => {
     const pageSize = process.env.PAGINATION_LIMIT;
     const page = Number(req.query.pageNumber) || 1;
-  
+
+    //Search filter
     const keyword = req.query.keyword
       ? { bookName: { $regex: req.query.keyword, $options: 'i' } }
       : {};
-
-      const category = req.query.category
+    //Category filter
+    const category = req.query.category
       ? { category: { $regex: req.query.category, $options: 'i' } }
       : {};
-      
-      // const queryCopy = req.query.category;
-      // console.log(queryCopy)
-      // // Removing fields from the query
-      // const removeFields = ['keyword', 'limit', 'page']
-   
-      
-
-    const count = await Product.countDocuments({...keyword,...category });
-    const products = await Product.find({...keyword,...category })
+    //Public Company filter
+    const publicCompany = req.query.publicCompany
+    ? { publicCompany: { $regex: req.query.publicCompany, $options: 'i' } }
+    : {};
+    //Author filter
+    const author = req.query.author
+    ? { author: { $regex: req.query.author, $options: 'i' } }
+    : {};
+    
+    const count = await Product.countDocuments({...keyword,...category,...publicCompany,...author });
+    const products = await Product.find({...keyword,...category,...publicCompany,...author })
       .limit(pageSize)
       .skip(pageSize * (page - 1));
   
@@ -163,6 +165,23 @@ const getTopProducts = asyncHandler(async (req, res) => {
     res.status(200).json(products);
   });
 
+// @desc    Get products in price range
+// @route   GET /api/products/priceRange
+// @access  Public
+  const getProductsInPriceRange = asyncHandler(async (req, res) => {
+    const { minPrice, maxPrice } = req.body;
+  
+    const products = await Product.find({
+      price: { $gte: minPrice, $lte: maxPrice },
+    });
+    if(products) {
+      return res.json(products);
+    } else {
+        res.status(404);
+        throw new Error('Resource not found');
+    }
+  });
+
 // @desc     Fetch all products
 // @route    Get api/products
 // @access   Public
@@ -180,4 +199,5 @@ export {
     createProductReview,
     getTopProducts,
     getProducts1,
+    getProductsInPriceRange,
 };
