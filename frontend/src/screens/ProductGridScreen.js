@@ -1,15 +1,23 @@
-import React, { useMemo } from "react";
+import React, { useMemo,useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import Product from "../componets/Product";
 import Loader from "../componets/Loader";
 import Message from "../componets/Message";
 import { useParams,useNavigate } from "react-router-dom";
 import Paginate from "../componets/Paginate";
-import { useGetProductsQuery } from "../slices/productsApiSlice";
+import { useGetProductsQuery, useGetProductPriceQuery } from "../slices/productsApiSlice";
+import { useDispatch } from "react-redux";
 const ProductGridScreen = () => {
-  const {pageNumber,keyword,category} = useParams();
+  const {pageNumber,keyword,category } = useParams();
   const { data: products, isLoading, error } = useGetProductsQuery({keyword,pageNumber,category});
+  const { data:productPrice} = useGetProductPriceQuery();
+  // const [ minPrice,setMinPrice] = useState('');
+  // const [ maxPrice,setMaxPrice] = useState('');
+
+  // const [ inputMinPrice,setinputMinPrice] = useState('');
+  // const [ inputMaxPrice,setinputMaxPrice] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const categories = [
     'Tiểu Thuyết',
     'Văn Học',
@@ -26,7 +34,12 @@ const setCategorys = (category) => {
     navigate('/');
   }
 };
-  
+const SubmitPrice = () => {
+  // dispatch(useGetProductPriceQuery({minPrice,maxPrice}));
+  console.log(minPrice)
+  console.log(maxPrice)
+}
+
   const pages = useMemo(() => {
     if (!products) return 0;
     
@@ -226,6 +239,7 @@ const setCategorys = (category) => {
                         Giá
                       </button>
                     </h2>
+                    <form onClick={SubmitPrice}>
                     <div
                       id="panelsStayOpen-collapseThree"
                       className="accordion-collapse collapse show"
@@ -239,10 +253,12 @@ const setCategorys = (category) => {
                               <input
                                 type="number"
                                 id="typeNumber"
+                                value={inputMinPrice}
+                                onChange={() => setinputMinPrice(minPrice)}
                                 className="form-control"
                               />
                               <label className="form-label" for="typeNumber">
-                                $0
+                                0 VND
                               </label>
                             </div>
                           </div>
@@ -252,17 +268,19 @@ const setCategorys = (category) => {
                               <input
                                 type="number"
                                 id="typeNumber"
+                                value={inputMaxPrice}
+                                onChange={() => setinputMaxPrice(maxPrice)}
                                 className="form-control"
                               />
                               <label className="form-label" for="typeNumber">
-                                500,0000
+                                500,0000 VND
                               </label>
                             </div>
                           </div>
                         </div>
                         <div className="d-grid gap-2">
                           <button
-                            type="button"
+                            type = "submit"
                             className="btn btn-outline-warning"
                           >
                             Chọn
@@ -270,7 +288,9 @@ const setCategorys = (category) => {
                         </div>
                       </div>
                     </div>
+                    </form>
                   </div>
+                  
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingThree">
                       <button
