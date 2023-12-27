@@ -239,7 +239,7 @@ const SubmitPrice = () => {
                         Giá
                       </button>
                     </h2>
-                    <form onClick={SubmitPrice}>
+                    {/* <form onClick={SubmitPrice}> */}
                     <div
                       id="panelsStayOpen-collapseThree"
                       className="accordion-collapse collapse show"
@@ -288,7 +288,7 @@ const SubmitPrice = () => {
                         </div>
                       </div>
                     </div>
-                    </form>
+                    {/* </form> */}
                   </div>
                   
                   <div className="accordion-item">
