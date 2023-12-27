@@ -172,8 +172,9 @@ const getTopProducts = asyncHandler(async (req, res) => {
     const { minPrice, maxPrice } = req.body;
   
     const products = await Product.find({
-      price: { $gte: minPrice, $lte: maxPrice },
+      bookPrice: { $gte: minPrice, $lte: maxPrice },
     });
+    console.log(products)
     if(products) {
       return res.json(products);
     } else {
