@@ -168,20 +168,28 @@ const getTopProducts = asyncHandler(async (req, res) => {
 // @desc    Get products in price range
 // @route   GET /api/products/priceRange
 // @access  Public
-  const getProductsInPriceRange = asyncHandler(async (req, res) => {
-    const { minPrice, maxPrice } = req.body;
-  
-    const products = await Product.find({
-      bookPrice: { $gte: minPrice, $lte: maxPrice },
-    });
-    console.log(products)
-    if(products) {
-      return res.json(products);
-    } else {
-        res.status(404);
-        throw new Error('Resource not found');
-    }
+const getProductsInPriceRange = asyncHandler(async (req, res) => {
+  // Chuyển đổi minPrice và maxPrice từ chuỗi sang số
+  const minPrice = parseFloat(req.body.minPrice);
+  const maxPrice = parseFloat(req.body.maxPrice);
+
+  // Kiểm tra xem minPrice và maxPrice có phải là số hợp lệ không
+  if (isNaN(minPrice) || isNaN(maxPrice)) {
+    res.status(400);
+    throw new Error('Invalid minPrice or maxPrice, minPrice and maxPrice must to be a number.');
+  }
+
+  const products = await Product.find({
+    bookPrice: { $gte: minPrice, $lte: maxPrice },
   });
+
+  if (products && products.length > 0) {
+    return res.json(products);
+  } else {
+    res.status(404);
+    throw new Error('Resource not found');
+  }
+});
 
 // @desc     Fetch all products
 // @route    Get api/products
