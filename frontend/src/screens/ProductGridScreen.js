@@ -10,14 +10,14 @@ import { useDispatch } from "react-redux";
 const ProductGridScreen = () => {
   const {pageNumber,keyword,category } = useParams();
   const { data: products, isLoading, error } = useGetProductsQuery({keyword,pageNumber,category});
-  const { data:productPrice} = useGetProductPriceQuery();
+  // const { data:productPrice} = useGetProductPriceQuery();
   // const [ minPrice,setMinPrice] = useState('');
   // const [ maxPrice,setMaxPrice] = useState('');
 
   // const [ inputMinPrice,setinputMinPrice] = useState('');
   // const [ inputMaxPrice,setinputMaxPrice] = useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const categories = [
     'Tiểu Thuyết',
     'Văn Học',
@@ -34,11 +34,11 @@ const setCategorys = (category) => {
     navigate('/');
   }
 };
-const SubmitPrice = () => {
-  // dispatch(useGetProductPriceQuery({minPrice,maxPrice}));
-  console.log(minPrice)
-  console.log(maxPrice)
-}
+// const SubmitPrice = () => {
+//   // dispatch(useGetProductPriceQuery({minPrice,maxPrice}));
+//   console.log(minPrice)
+//   console.log(maxPrice)
+// }
 
   const pages = useMemo(() => {
     if (!products) return 0;
@@ -253,8 +253,8 @@ const SubmitPrice = () => {
                               <input
                                 type="number"
                                 id="typeNumber"
-                                value={inputMinPrice}
-                                onChange={() => setinputMinPrice(minPrice)}
+                                // value={inputMinPrice}
+                                // onChange={() => setinputMinPrice(minPrice)}
                                 className="form-control"
                               />
                               <label className="form-label" for="typeNumber">
@@ -268,8 +268,8 @@ const SubmitPrice = () => {
                               <input
                                 type="number"
                                 id="typeNumber"
-                                value={inputMaxPrice}
-                                onChange={() => setinputMaxPrice(maxPrice)}
+                                // value={inputMaxPrice}
+                                // onChange={() => setinputMaxPrice(maxPrice)}
                                 className="form-control"
                               />
                               <label className="form-label" for="typeNumber">
