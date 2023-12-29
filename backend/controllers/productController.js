@@ -8,6 +8,7 @@ const getProducts = asyncHandler(async (req, res) => {
     const pageSize = process.env.PAGINATION_LIMIT;
     const page = Number(req.query.pageNumber) || 1;
 
+
     //Search filter
     const keyword = req.query.keyword
       ? { bookName: { $regex: req.query.keyword, $options: 'i' } }
@@ -16,6 +17,22 @@ const getProducts = asyncHandler(async (req, res) => {
     const category = req.query.category
       ? { category: { $regex: req.query.category, $options: 'i' } }
       : {};
+    
+     //filter Price
+     const minPrice = req.query.minPrice;
+     const maxPrice = req.query.maxPrice;
+
+  
+    // Kiểm tra xem minPrice và maxPrice có phải là số hợp lệ không
+    // if (isNaN(minPrice) || isNaN(maxPrice)) {
+    //   res.status(400);
+    //   throw new Error('Invalid minPrice or maxPrice, minPrice and maxPrice must to be a number.');
+    // }
+    // console.log('minPrice', minPrice)
+    // console.log('maxPrice',maxPrice)
+  
+    const price = minPrice && maxPrice ? { bookPrice: { $gte: minPrice, $lte: maxPrice }}:{}
+  
     //Public Company filter
     const publicCompany = req.query.publicCompany
     ? { publicCompany: { $regex: req.query.publicCompany, $options: 'i' } }
@@ -25,12 +42,14 @@ const getProducts = asyncHandler(async (req, res) => {
     ? { author: { $regex: req.query.author, $options: 'i' } }
     : {};
     
-    const count = await Product.countDocuments({...keyword,...category,...publicCompany,...author });
-    const products = await Product.find({...keyword,...category,...publicCompany,...author })
+    const count = await Product.countDocuments({...keyword,...category, ...price,...publicCompany,...author });
+
+    const products = await Product.find({...keyword,...category, ...price,...publicCompany,...author })
       .limit(pageSize)
       .skip(pageSize * (page - 1));
   
     res.json({ products, page, pages: Math.ceil(count / pageSize) });
+  
   });
 
 // @desc     Fetch a product
@@ -182,13 +201,15 @@ const getProductsInPriceRange = asyncHandler(async (req, res) => {
   const products = await Product.find({
     bookPrice: { $gte: minPrice, $lte: maxPrice },
   });
-
+  console.log(products)
   if (products && products.length > 0) {
     return res.json(products);
   } else {
     res.status(404);
     throw new Error('Resource not found');
   }
+  
+
 });
 
 // @desc     Fetch all products

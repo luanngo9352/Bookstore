@@ -56,12 +56,15 @@ const OrderScreen = () => {
     function onError(){
       toast.error('Thanh toán thất bại')
     }
+   
     function createOrder(data, actions) {
+      const totalPrice = (order.totalPrice/23000).toFixed(2)
+      
       return actions.order
         .create({
           purchase_units: [
             {
-              amount: { value: order.totalPrice },
+              amount: { value: totalPrice },
             },
           ],
         })
