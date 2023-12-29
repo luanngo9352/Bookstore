@@ -4,11 +4,13 @@ import { apiSlice } from "./apiSlice";
 export const productsApiSlice = apiSlice.injectEndpoints ({
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: ({keyword,pageNumber,category}) =>({
+            query: ({keyword,pageNumber,minPrice,maxPrice,category}) =>({
                 url: PRODUCTS_URL,
                 params: {
                     keyword,
                     category,
+                    minPrice,
+                    maxPrice,
                     pageNumber,
                 }
             }),
@@ -68,18 +70,7 @@ export const productsApiSlice = apiSlice.injectEndpoints ({
       }),
       keepUnusedDataFor:5
       }),
-      // getProductPrice:builder.query({
-      //   query: (minPrice, maxPrice) =>({
-      //     url: `${PRODUCTS_URL}/priceRange`,
-      //     params: {
-      //       minPrice, 
-      //       maxPrice
-      //   }
-
-      // }),
-      // keepUnusedDataFor:5,
-      // providesTags: ['Products']
-      // })
+      
     })
 });
 export const {useGetProductsQuery, useGetProductDetailQuery,useCreateProductMutation, useUpdateProductMutation,useUploadProductImageMutation, useDeleteProductMutation, useCreateReviewMutation,useGetTopProductsQuery ,useGetProducts1Query} = productsApiSlice;

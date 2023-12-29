@@ -5,19 +5,15 @@ import Loader from "../componets/Loader";
 import Message from "../componets/Message";
 import { useParams,useNavigate } from "react-router-dom";
 import Paginate from "../componets/Paginate";
-import { useGetProductsQuery, useGetProductPriceQuery } from "../slices/productsApiSlice";
-import { useDispatch } from "react-redux";
+import { useGetProductsQuery } from "../slices/productsApiSlice";
 const ProductGridScreen = () => {
-  const {pageNumber,keyword,category } = useParams();
-  const { data: products, isLoading, error } = useGetProductsQuery({keyword,pageNumber,category});
-  // const { data:productPrice} = useGetProductPriceQuery();
-  // const [ minPrice,setMinPrice] = useState('');
-  // const [ maxPrice,setMaxPrice] = useState('');
+  const {pageNumber,keyword,category,minPrice, maxPrice} = useParams();
+  const { data: products, isLoading, error } = useGetProductsQuery({keyword,pageNumber,category,minPrice,maxPrice});
+  const [ minPriceState,setMinPrice] = useState('');
+  const [ maxPriceState,setMaxPrice] = useState('');
 
-  // const [ inputMinPrice,setinputMinPrice] = useState('');
-  // const [ inputMaxPrice,setinputMaxPrice] = useState('');
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+ 
   const categories = [
     'Tiểu Thuyết',
     'Văn Học',
@@ -34,11 +30,15 @@ const setCategorys = (category) => {
     navigate('/');
   }
 };
-// const SubmitPrice = () => {
-//   // dispatch(useGetProductPriceQuery({minPrice,maxPrice}));
-//   console.log(minPrice)
-//   console.log(maxPrice)
-// }
+const SubmitPrice =  (e) =>  {
+  e.preventDefault();
+
+  if (minPriceState && maxPriceState) {
+    navigate(`/all-product/filterPrice/${minPriceState.trim()}/${maxPriceState.trim()}`);
+  } else {
+    navigate('/');
+  }
+}
 
   const pages = useMemo(() => {
     if (!products) return 0;
@@ -239,7 +239,7 @@ const setCategorys = (category) => {
                         Giá
                       </button>
                     </h2>
-                    {/* <form onClick={SubmitPrice}> */}
+                   <form onSubmit={SubmitPrice}>
                     <div
                       id="panelsStayOpen-collapseThree"
                       className="accordion-collapse collapse show"
@@ -252,9 +252,9 @@ const setCategorys = (category) => {
                             <div className="form-outline">
                               <input
                                 type="number"
-                                id="typeNumber"
-                                // value={inputMinPrice}
-                                // onChange={() => setinputMinPrice(minPrice)}
+                            
+                                value={minPriceState}
+                                onChange={(e) => setMinPrice(e.target.value)}
                                 className="form-control"
                               />
                               <label className="form-label" for="typeNumber">
@@ -267,9 +267,8 @@ const setCategorys = (category) => {
                             <div className="form-outline">
                               <input
                                 type="number"
-                                id="typeNumber"
-                                // value={inputMaxPrice}
-                                // onChange={() => setinputMaxPrice(maxPrice)}
+                                value={maxPriceState}
+                                onChange={(e) => setMaxPrice(e.target.value)}
                                 className="form-control"
                               />
                               <label className="form-label" for="typeNumber">
@@ -282,13 +281,14 @@ const setCategorys = (category) => {
                           <button
                             type = "submit"
                             className="btn btn-outline-warning"
+                         
                           >
                             Chọn
                           </button>
                         </div>
                       </div>
                     </div>
-                    {/* </form> */}
+                    </form>
                   </div>
                   
                   <div className="accordion-item">

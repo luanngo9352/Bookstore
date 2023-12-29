@@ -43,9 +43,11 @@ const router = createBrowserRouter(
       <Route path="/all-product" element={< ProductGridScreen/>}/>
       <Route path="/all-product/search/:keyword" element={< ProductGridScreen/>}/>
       <Route path="/all-product/filter/:category" element={< ProductGridScreen/>}/>
+      <Route path="/all-product/filter/:category/:minPrice/:maxPrice" element={< ProductGridScreen/>}/>
+      <Route path="/all-product/filterPrice/:minPrice/:maxPrice" element={< ProductGridScreen/>}/>
       <Route path="/all-product/page/:pageNumber" element={< ProductGridScreen/>}/>
       <Route path="/all-product/search/:keyword/page/:pageNumber" element={< ProductGridScreen/>}/>
-      <Route path="/all-product/filter/:category/page/:pageNumber" element={< ProductGridScreen/>}/>
+      <Route path="/all-product/filtercategory/:category/page/:pageNumber" element={< ProductGridScreen/>}/>
       <Route path="/login" element={< LoginScreen/>}/>
       <Route path="/register" element={< RegisterScreen/>}/>
       <Route path='/cart' element= { <CartScreen/>}/>
