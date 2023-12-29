@@ -114,7 +114,7 @@ const CartScreen = () => {
                                   </p>
                                   </div>
                                   <div className="col-4">
-                                  <span>{ totalItem.total } VND </span>
+                                  <span>{ totalItem.total } </span>
                                   </div>
                                   </div>
                                   <div className="row">
@@ -123,7 +123,7 @@ const CartScreen = () => {
                                   </p>
                                   </div>
                                   <div className="col-4">
-                                  <span>{ totalItem.ship } VND </span>
+                                  <span>{ totalItem.ship } </span>
                                   </div>
                                   </div>
                                   <div className="row" style={{ fontWeight: '650'}}>
